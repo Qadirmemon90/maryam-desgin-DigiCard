@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique Maryam — Admin Portal</title>
+  <meta name="description" content="Manage Boutique Maryam digital visiting card profile, links, collections, and media assets." />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS & Custom Design System -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="admin-body">
+  <main class="min-h-screen">
+    <!-- 1. AUTHENTICATION / LOGIN SCREEN -->
+    <section id="loginScreen" class="login-shell" aria-label="Admin Authentication">
+      <div class="login-card">
+        <div class="mb-8 text-center">
+          <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-pink-50 border border-pink-100 mb-4 p-2">
+            <img src="assets/logo.png" class="h-full w-full object-contain" alt="Boutique Maryam Logo" />
+          </div>
+          <h1 class="text-2xl font-black tracking-tight text-gray-900">Admin Portal</h1>
+          <p class="mt-1.5 text-xs text-gray-500 leading-relaxed">
+            Enter your credentials to manage digital card links and profile settings.
+          </p>
+        </div>
+
+        <form onsubmit="event.preventDefault();" class="space-y-4">
+          <label class="field-label" for="email">
+            <span>Email Address</span>
+            <input id="email" type="email" placeholder="admin@email.com" autocomplete="email" required class="input" />
+          </label>
+
+          <label class="field-label" for="password">
+            <span>Password</span>
+            <div class="relative">
+              <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" required class="input pr-16" />
+              <button id="togglePasswordBtn" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-pink-600 hover:text-pink-700 px-1 py-1 rounded">
+                Show
+              </button>
+            </div>
+          </label>
+
+          <button id="loginBtn" type="button" class="btn-primary w-full mt-2">
+            <span id="loginBtnText">Sign In to Dashboard</span>
+          </button>
+
+          <div id="loginMsg" class="hidden status-box status-error mt-3" role="alert"></div>
+
+          <div class="mt-6 pt-5 border-t border-gray-100 text-center">
+            <a href="index.html" class="text-xs font-medium text-gray-500 hover:text-pink-600 transition-colors inline-flex items-center gap-1">
+              <span>← Back to Public Card</span>
+            </a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 2. ADMIN DASHBOARD SCREEN -->
+    <section id="adminScreen" class="hidden" aria-label="Admin Dashboard">
+      <div class="admin-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar" aria-label="Admin navigation sidebar">
+          <div class="admin-brand">
+            <div class="w-10 h-10 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center p-1.5 flex-shrink-0">
+              <img src="assets/logo.png" class="w-full h-full object-contain" alt="Boutique Logo" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2">
+                <h1 class="text-base font-extrabold text-gray-900 truncate">Boutique Admin</h1>
+                <span class="admin-brand-badge">Pro</span>
+              </div>
+              <p id="adminUserText" class="text-[11px] font-medium text-gray-400 truncate mt-0.5">admin@boutique.pk</p>
+            </div>
+          </div>
+
+          <!-- Navigation Links -->
+          <nav class="admin-nav" aria-label="Admin Sections">
+            <button type="button" class="admin-nav-link is-active" data-panel-link="collectionsSection">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              <span>Collections &amp; Links</span>
+            </button>
+            <button type="button" class="admin-nav-link" data-panel-link="profileSection">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>Profile Settings</span>
+            </button>
+            <button type="button" class="admin-nav-link" data-panel-link="overviewSection">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+              <span>Cloudinary Media</span>
+            </button>
+          </nav>
+
+          <!-- Sidebar Actions -->
+          <div class="admin-sidebar-actions">
+            <a href="index.html" target="_blank" rel="noopener noreferrer" class="btn-secondary" title="Preview public card in new tab">
+              <svg class="w-3.5 h-3.5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <span>View Live Card</span>
+            </a>
+            <button id="seedBtn" type="button" class="btn-secondary" title="Populate initial demo links">
+              <svg class="w-3.5 h-3.5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <span>Add Demo Links</span>
+            </button>
+            <button id="logoutBtn" type="button" class="btn-secondary text-rose-600 hover:text-rose-700">
+              <svg class="w-3.5 h-3.5 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="admin-content">
+          <!-- Topbar Header -->
+          <header class="admin-topbar">
+            <div>
+              <p id="adminPanelEyebrow" class="text-[11px] font-black uppercase tracking-wider text-pink-600">Collections</p>
+              <h2 id="adminPanelTitle" class="text-2xl font-black text-gray-900 tracking-tight">Manage Boutique Links</h2>
+            </div>
+            <div class="admin-topbar-actions">
+              <button id="addLinkBtn" type="button" class="btn-primary">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <span>Add Collection</span>
+              </button>
+            </div>
+          </header>
+
+          <!-- Global Status Banner -->
+          <div id="globalMsg" class="hidden status-box" role="status" aria-live="polite"></div>
+
+          <!-- PANEL 1: COLLECTIONS & LINKS -->
+          <section id="collectionsSection" class="admin-section admin-panel is-active" aria-label="Collections and Links Section">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-gray-100">
+              <div>
+                <h3 class="text-lg font-extrabold text-gray-900">Collections &amp; Action Links</h3>
+                <p class="text-xs text-gray-500 mt-0.5">
+                  Organize links shown on the digital visiting card. Drag or edit order, add promotional badges, and use AI copywriter.
+                </p>
+              </div>
+            </div>
+
+            <!-- New Draft Collection Form (Hidden until Add button clicked) -->
+            <div id="draftArea" class="mt-5 hidden" aria-label="Add new collection draft"></div>
+
+            <!-- Collection Cards List -->
+            <div id="linksAdmin" class="mt-5 grid gap-3">
+              <div class="rounded-xl border border-dashed border-gray-200 bg-gray-50/70 p-6 text-center text-xs text-gray-500">
+                Loading collections...
+              </div>
+            </div>
+          </section>
+
+          <!-- PANEL 2: PROFILE & BRAND SETTINGS -->
+          <section id="profileSection" class="admin-section admin-panel" aria-label="Profile and Brand Settings Section">
+            <div class="pb-4 border-b border-gray-100">
+              <h3 class="text-lg font-extrabold text-gray-900">Profile &amp; Visual Identity</h3>
+              <p class="text-xs text-gray-500 mt-0.5">Customize your brand identity, contact channels, and digital visiting card colors.</p>
+            </div>
+
+            <form id="profileForm" class="mt-6 space-y-6">
+              <!-- Section 1: Brand Info -->
+              <div>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-pink-600 mb-3">1. Brand Identity</h4>
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <label class="field-label">
+                    <span>Brand / Business Name</span>
+                    <input name="brandName" class="input" placeholder="Boutique Maryam" />
+                  </label>
+                  <label class="field-label">
+                    <span>Username / Handle</span>
+                    <input name="username" class="input" placeholder="boutiquemaryam.pk" />
+                  </label>
+
+                  <div class="sm:col-span-2">
+                    <label class="field-label">
+                      <span>Logo Image URL</span>
+                      <input name="logoUrl" id="logoUrlInput" class="input" placeholder="assets/logo.png or Cloudinary URL" />
+                    </label>
+                    <div class="upload-row">
+                      <input id="profileLogoFile" type="file" accept="image/*" class="hidden" />
+                      <button type="button" id="uploadProfileLogoBtn" class="btn-small">
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        <span>Upload Logo to Cloudinary</span>
+                      </button>
+                      <span class="upload-note">PNG, JPG, or WEBP with transparent background recommended</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 2: Contact Channels -->
+              <div class="pt-4 border-t border-gray-100">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-pink-600 mb-3">2. Contact &amp; Social Channels</h4>
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <label class="field-label">
+                    <span>WhatsApp URL / Number</span>
+                    <input name="whatsapp" class="input" placeholder="https://wa.me/923000000000" />
+                  </label>
+                  <label class="field-label">
+                    <span>Instagram URL</span>
+                    <input name="instagram" class="input" placeholder="https://instagram.com/username" />
+                  </label>
+                  <label class="field-label">
+                    <span>Facebook URL</span>
+                    <input name="facebook" class="input" placeholder="https://facebook.com/page" />
+                  </label>
+                  <label class="field-label">
+                    <span>Website URL</span>
+                    <input name="website" class="input" placeholder="https://boutiquemaryam.pk" />
+                  </label>
+                  <label class="field-label">
+                    <span>TikTok URL</span>
+                    <input name="tiktok" class="input" placeholder="https://tiktok.com/@username" />
+                  </label>
+                  <label class="field-label">
+                    <span>Pinterest URL</span>
+                    <input name="pinterest" class="input" placeholder="https://pinterest.com/username" />
+                  </label>
+                </div>
+              </div>
+
+              <!-- Section 3: Visual Theme Palette -->
+              <div class="pt-4 border-t border-gray-100">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-pink-600 mb-2">3. Visual Theme &amp; Colors</h4>
+                <p class="text-xs text-gray-500 mb-3">Select a curated luxury preset or customize each color surface:</p>
+
+                <!-- Curated Preset Buttons -->
+                <div class="palette-preset-row">
+                  <button type="button" class="palette-preset-btn" data-preset="rose">
+                    <span class="palette-dot" style="background: #ffffff; border-color: #d8328b;"></span>
+                    <span>Rose Couture (Default)</span>
+                  </button>
+                  <button type="button" class="palette-preset-btn" data-preset="noir">
+                    <span class="palette-dot" style="background: #111114;"></span>
+                    <span>Minimal Noir</span>
+                  </button>
+                  <button type="button" class="palette-preset-btn" data-preset="gold">
+                    <span class="palette-dot" style="background: #faf6ee; border-color: #c29d59;"></span>
+                    <span>Champagne Gold</span>
+                  </button>
+                  <button type="button" class="palette-preset-btn" data-preset="ivory">
+                    <span class="palette-dot" style="background: #fbfbfc;"></span>
+                    <span>Pure Ivory</span>
+                  </button>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <label class="field-label">
+                    <span>Card Background</span>
+                    <input name="themeBg" type="color" class="color-input" value="#ffffff" />
+                  </label>
+                  <label class="field-label">
+                    <span>Page Canvas</span>
+                    <input name="pageBg" type="color" class="color-input" value="#faf9fb" />
+                  </label>
+                  <label class="field-label">
+                    <span>Link Button Fill</span>
+                    <input name="buttonBg" type="color" class="color-input" value="#ffffff" />
+                  </label>
+                  <label class="field-label">
+                    <span>Text Color</span>
+                    <input name="textColor" type="color" class="color-input" value="#0f0f14" />
+                  </label>
+                </div>
+              </div>
+
+              <!-- Submit -->
+              <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+                <span class="text-xs text-gray-500">Changes will instantly sync to all visitors in real-time.</span>
+                <button type="button" id="saveProfileBtn" class="btn-primary">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                  <span>Save Profile</span>
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <!-- PANEL 3: CLOUDINARY MEDIA SETUP -->
+          <section id="overviewSection" class="admin-section admin-panel" aria-label="Cloudinary Media Setup Section">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-gray-100">
+              <div>
+                <h3 class="text-lg font-extrabold text-gray-900">Cloudinary Media Hub</h3>
+                <p class="text-xs text-gray-500 mt-0.5">Upload high-resolution logos and collection images directly to your cloud CDN.</p>
+              </div>
+              <span id="cloudinaryStatus" class="admin-chip admin-chip-muted">Checking...</span>
+            </div>
+
+            <div class="mt-5 space-y-4">
+              <div class="rounded-xl border border-pink-100 bg-pink-50/50 p-4 text-xs leading-relaxed text-gray-700">
+                <p class="font-bold text-gray-900 mb-1">How unsigned uploads work:</p>
+                <p>
+                  Unsigned upload preset <code class="font-bold text-pink-700 bg-white px-1.5 py-0.5 rounded border border-pink-200">ml_default</code>
+                  is linked in <code class="bg-white px-1.5 py-0.5 rounded border border-pink-200">js/cloudinary-config.js</code>.
+                  Paste your <strong>Cloud Name</strong> from your Cloudinary console into that file to enable instant image uploads.
+                </p>
+                <p class="mt-2 text-rose-700 font-semibold">
+                  Note: Do not paste your API Secret in frontend code. Unsigned uploads only require your Cloud Name and Upload Preset.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-gray-200 bg-white p-4">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Configuration Reference</h4>
+                <pre class="bg-gray-50 rounded-lg p-3 text-[11px] font-mono text-gray-800 border border-gray-100 overflow-x-auto"><code>window.cloudinaryConfig = {
+  cloudName: "your-cloud-name",
+  uploadPreset: "ml_default",
+  folder: "boutique-maryam"
+};</code></pre>
+              </div>
+
+              <p id="cloudinaryHelp" class="text-xs font-bold text-pink-700"></p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/cloudinary-config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
