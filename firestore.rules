@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // =========================================================================
+    // MARYAM'S DESGINS — OFFICIAL DIGITAL VISITING CARD FIRESTORE SECURITY RULES
+    // =========================================================================
+
+    // 1. Settings & Profiles (Brand Bio, Phone, WhatsApp, Logo, Theme Palette)
+    // - Public visitors can read the visiting card details
+    // - Admin can update settings (Open mode for direct admin / authenticated admin)
+    match /settings/{document=**} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // 2. Boutique Collection Catalog & Links
+    // - Public visitors can view active collections
+    // - Admin can add, update, reorder, or delete collections
+    match /links/{linkId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // 3. Multi-Brand Hub & Alternate Visiting Cards
+    // - Public visitors can view specific brand cards (?brand=bridal, etc.)
+    // - Admin can create and manage brand profiles
+    match /brands/{brandId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // 4. Digital Visiting Card Analytics & Live Events
+    // - Public visitors automatically record views, QR scans, and inquiry taps
+    // - Admin can read metrics and reset counters
+    match /analytics/{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

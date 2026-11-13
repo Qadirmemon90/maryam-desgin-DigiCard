@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boutique Maryam — Admin Portal</title>
-  <meta name="description" content="Manage Boutique Maryam digital visiting card profile, links, collections, and media assets." />
-  <meta name="theme-color" content="#ffffff" />
+  <title>Maryam's Desgins — Executive Admin Dashboard &amp; Digital Identity Portal</title>
+  <meta name="description" content="Manage Maryam's Desgins digital visiting card profiles, visitor analytics, QR code studio, multi-brand identity, and couture collections." />
+  <meta name="theme-color" content="#FAF7F2" />
 
   <!-- Preconnect for Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS & Custom Design System -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,30 +18,32 @@
 </head>
 <body class="admin-body">
   <main class="min-h-screen">
-    <!-- 1. AUTHENTICATION / LOGIN SCREEN -->
+    <!-- ===================================================================
+         1. AUTHENTICATION / LOGIN SCREEN
+         =================================================================== -->
     <section id="loginScreen" class="login-shell" aria-label="Admin Authentication">
       <div class="login-card">
-        <div class="mb-8 text-center">
-          <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-pink-50 border border-pink-100 mb-4 p-2">
-            <img src="assets/logo.png" class="h-full w-full object-contain" alt="Boutique Maryam Logo" />
+        <div class="mb-6 text-center">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-amber-50 border border-amber-200/60 mb-3 p-2">
+            <img src="assets/maryam_logo_refinement.avif" onerror="this.src='assets/logo.png'" class="h-full w-full object-contain" alt="Maryam's Desgins Logo" />
           </div>
-          <h1 class="text-2xl font-black tracking-tight text-gray-900">Admin Portal</h1>
-          <p class="mt-1.5 text-xs text-gray-500 leading-relaxed">
-            Enter your credentials to manage digital card links and profile settings.
+          <h1 class="text-xl font-black tracking-tight text-gray-900">Maryam's Admin Portal</h1>
+          <p class="mt-1 text-xs text-gray-500 leading-relaxed">
+            Manage your digital visiting card, visitor analytics, QR code studio, and collections.
           </p>
         </div>
 
         <form onsubmit="event.preventDefault();" class="space-y-4">
           <label class="field-label" for="email">
-            <span>Email Address</span>
-            <input id="email" type="email" placeholder="admin@email.com" autocomplete="email" required class="input" />
+            <span>Admin Email Address</span>
+            <input id="email" type="email" placeholder="admin@maryamsdesign.com" autocomplete="email" class="input" />
           </label>
 
           <label class="field-label" for="password">
             <span>Password</span>
             <div class="relative">
-              <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" required class="input pr-16" />
-              <button id="togglePasswordBtn" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-pink-600 hover:text-pink-700 px-1 py-1 rounded">
+              <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" class="input pr-16" />
+              <button id="togglePasswordBtn" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-amber-700 hover:text-amber-800 px-1 py-1 rounded">
                 Show
               </button>
             </div>
@@ -51,54 +53,99 @@
             <span id="loginBtnText">Sign In to Dashboard</span>
           </button>
 
+          <div class="demo-access-divider"><span>OR QUICK ACCESS</span></div>
+
+          <button id="instantDemoBtn" type="button" class="btn-secondary w-full text-xs font-bold py-2.5 flex items-center justify-center gap-1.5 border-amber-300 bg-amber-50/70 hover:bg-amber-100/70 text-amber-900">
+            <svg class="w-4 h-4 text-amber-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span>Instant Dashboard Access (Full Admin)</span>
+          </button>
+
           <div id="loginMsg" class="hidden status-box status-error mt-3" role="alert"></div>
 
-          <div class="mt-6 pt-5 border-t border-gray-100 text-center">
-            <a href="index.html" class="text-xs font-medium text-gray-500 hover:text-pink-600 transition-colors inline-flex items-center gap-1">
-              <span>← Back to Public Card</span>
+          <div class="mt-6 pt-4 border-t border-gray-100 text-center">
+            <a href="index.html" class="text-xs font-semibold text-gray-500 hover:text-amber-800 transition-colors inline-flex items-center gap-1">
+              <span>← Back to Public Visiting Card</span>
             </a>
           </div>
         </form>
       </div>
     </section>
 
-    <!-- 2. ADMIN DASHBOARD SCREEN -->
+    <!-- ===================================================================
+         2. ADMIN DASHBOARD SCREEN
+         =================================================================== -->
     <section id="adminScreen" class="hidden" aria-label="Admin Dashboard">
       <div class="admin-layout">
         <!-- Sidebar Navigation -->
         <aside class="admin-sidebar" aria-label="Admin navigation sidebar">
+          <!-- Brand Emblem -->
           <div class="admin-brand">
-            <div class="w-10 h-10 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center p-1.5 flex-shrink-0">
-              <img src="assets/logo.png" class="w-full h-full object-contain" alt="Boutique Logo" />
+            <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200/60 flex items-center justify-center p-1.5 flex-shrink-0">
+              <img src="assets/maryam_logo_refinement.avif" onerror="this.src='assets/logo.png'" class="w-full h-full object-contain" alt="Logo" />
             </div>
             <div class="min-w-0 flex-1">
-              <div class="flex items-center gap-2">
-                <h1 class="text-base font-extrabold text-gray-900 truncate">Boutique Admin</h1>
-                <span class="admin-brand-badge">Pro</span>
+              <div class="flex items-center gap-1.5">
+                <h1 class="text-sm font-extrabold text-gray-900 truncate">Maryam's Studio</h1>
+                <span class="admin-brand-badge">Executive</span>
               </div>
-              <p id="adminUserText" class="text-[11px] font-medium text-gray-400 truncate mt-0.5">admin@boutique.pk</p>
+              <p id="adminUserText" class="text-[11px] font-medium text-gray-400 truncate mt-0.5">admin@maryamsdesign.com</p>
+            </div>
+          </div>
+
+          <!-- Multi-Brand Switcher Widget -->
+          <div class="admin-brand-widget">
+            <div class="admin-brand-widget-header">
+              <span class="admin-brand-widget-title">Active Brand</span>
+              <button type="button" id="quickNewBrandBtn" class="text-[10px] font-black text-amber-800 hover:underline uppercase">+ New Brand</button>
+            </div>
+            <select id="brandSwitcherSelect" class="admin-brand-select">
+              <option value="default">Maryam's Desgins (Primary)</option>
+            </select>
+            <div class="mt-2 pt-2 border-t border-amber-200/50 flex items-center justify-between">
+              <span id="activeBrandSlugDisplay" class="text-[10px] font-mono text-gray-500 truncate mr-1">Root URL (Primary)</span>
+              <button type="button" id="copyBrandLinkBtn" class="text-[10px] font-bold text-amber-800 hover:text-amber-900 flex-shrink-0">Copy Link</button>
             </div>
           </div>
 
           <!-- Navigation Links -->
           <nav class="admin-nav" aria-label="Admin Sections">
-            <button type="button" class="admin-nav-link is-active" data-panel-link="collectionsSection">
+            <button type="button" class="admin-nav-link is-active" data-panel-link="dashboardSection">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+              <span>Dashboard &amp; Analytics</span>
+            </button>
+            <button type="button" class="admin-nav-link" data-panel-link="collectionsSection">
               <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
               <span>Collections &amp; Links</span>
             </button>
             <button type="button" class="admin-nav-link" data-panel-link="profileSection">
               <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              <span>Profile Settings</span>
+              <span>Brand Identity &amp; Bio</span>
+            </button>
+            <button type="button" class="admin-nav-link" data-panel-link="paletteSection">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path></svg>
+              <span>Luxury Color Palette</span>
+            </button>
+            <button type="button" class="admin-nav-link" data-panel-link="qrSection">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="3" height="3"></rect><rect x="18" y="18" width="3" height="3"></rect></svg>
+              <span>QR Code Studio</span>
+            </button>
+            <button type="button" class="admin-nav-link" data-panel-link="brandsSection">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              <span>Multi-Brand Hub</span>
             </button>
             <button type="button" class="admin-nav-link" data-panel-link="overviewSection">
               <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
-              <span>Cloudinary Media</span>
+              <span>Cloudinary Media Hub</span>
+            </button>
+            <button type="button" class="admin-nav-link" data-panel-link="settingsSection">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span>System &amp; Backups</span>
             </button>
           </nav>
 
           <!-- Sidebar Actions -->
           <div class="admin-sidebar-actions">
-            <a href="index.html" target="_blank" rel="noopener noreferrer" class="btn-secondary" title="Preview public card in new tab">
+            <a id="viewLiveCardLink" href="index.html" target="_blank" rel="noopener noreferrer" class="btn-secondary" title="Preview public card in new tab">
               <svg class="w-3.5 h-3.5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               <span>View Live Card</span>
             </a>
@@ -110,6 +157,9 @@
               <svg class="w-3.5 h-3.5 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
               <span>Sign Out</span>
             </button>
+            <div class="pt-2 text-center text-[10.5px] text-gray-400 font-medium">
+              &copy; 2026 Designed &amp; Developed by <span class="font-bold text-gray-600">Metrisolution</span>
+            </div>
           </div>
         </aside>
 
@@ -118,67 +168,294 @@
           <!-- Topbar Header -->
           <header class="admin-topbar">
             <div>
-              <p id="adminPanelEyebrow" class="text-[11px] font-black uppercase tracking-wider text-pink-600">Collections</p>
-              <h2 id="adminPanelTitle" class="text-2xl font-black text-gray-900 tracking-tight">Manage Boutique Links</h2>
+              <p id="adminPanelEyebrow" class="text-[10.5px] font-black uppercase tracking-wider text-amber-700">Executive Dashboard</p>
+              <h2 id="adminPanelTitle" class="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">Visitor Analytics &amp; Performance</h2>
             </div>
-            <div class="admin-topbar-actions">
-              <button id="addLinkBtn" type="button" class="btn-primary">
+            <div class="admin-topbar-actions flex items-center gap-2">
+              <button id="makeDefaultBrandBtn" type="button" class="btn-secondary text-xs" title="Make active brand the primary default for index.html">
+                <span>Set as Default Brand</span>
+              </button>
+              <button id="addLinkBtn" type="button" class="btn-primary hidden">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 <span>Add Collection</span>
               </button>
             </div>
           </header>
 
-          <!-- Global Status Banner -->
-          <div id="globalMsg" class="hidden status-box" role="status" aria-live="polite"></div>
+          <!-- Global Status Message Banner -->
+          <div id="globalMsg" class="hidden status-box mb-4" role="status" aria-live="polite"></div>
 
-          <!-- PANEL 1: COLLECTIONS & LINKS -->
-          <section id="collectionsSection" class="admin-section admin-panel is-active" aria-label="Collections and Links Section">
-            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-gray-100">
-              <div>
-                <h3 class="text-lg font-extrabold text-gray-900">Collections &amp; Action Links</h3>
-                <p class="text-xs text-gray-500 mt-0.5">
-                  Organize links shown on the digital visiting card. Drag or edit order, add promotional badges, and use AI copywriter.
-                </p>
+          <!-- ================= PANEL 0: DASHBOARD & USER ANALYTICS ================= -->
+          <section id="dashboardSection" class="admin-section admin-panel is-active" aria-label="Visitor Analytics and Performance Section">
+            <!-- KPI Metrics Cards Grid -->
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="kpi-card-header">
+                  <span class="kpi-title">Total Visitors</span>
+                  <div class="kpi-icon-wrap">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  </div>
+                </div>
+                <div id="kpiTotalViews" class="kpi-value"><span class="skeleton-text w-16 h-7 inline-block rounded">Loading...</span></div>
+                <div class="kpi-trend kpi-trend-neutral">
+                  <span>Live Visiting Card Traffic</span>
+                </div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card-header">
+                  <span class="kpi-title">Unique Clients</span>
+                  <div class="kpi-icon-wrap">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  </div>
+                </div>
+                <div id="kpiUniqueVisitors" class="kpi-value"><span class="skeleton-text w-14 h-7 inline-block rounded">Loading...</span></div>
+                <div class="kpi-trend kpi-trend-neutral">
+                  <span>First-Time Scanners</span>
+                </div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card-header">
+                  <span class="kpi-title">QR Code Scans</span>
+                  <div class="kpi-icon-wrap">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>
+                  </div>
+                </div>
+                <div id="kpiQrScans" class="kpi-value"><span class="skeleton-text w-14 h-7 inline-block rounded">Loading...</span></div>
+                <div class="kpi-trend kpi-trend-neutral">
+                  <span>Direct Physical Scans</span>
+                </div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card-header">
+                  <span class="kpi-title">Direct Inquiries</span>
+                  <div class="kpi-icon-wrap">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                  </div>
+                </div>
+                <div id="kpiWaInquiries" class="kpi-value"><span class="skeleton-text w-14 h-7 inline-block rounded">Loading...</span></div>
+                <div class="kpi-trend kpi-trend-neutral">
+                  <span>WhatsApp &amp; Calls</span>
+                </div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card-header">
+                  <span class="kpi-title">vCards Saved</span>
+                  <div class="kpi-icon-wrap">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline></svg>
+                  </div>
+                </div>
+                <div id="kpiVcardSaved" class="kpi-value"><span class="skeleton-text w-12 h-7 inline-block rounded">Loading...</span></div>
+                <div class="kpi-trend kpi-trend-neutral">
+                  <span>Saved to Phonebook</span>
+                </div>
               </div>
             </div>
 
-            <!-- New Draft Collection Form (Hidden until Add button clicked) -->
-            <div id="draftArea" class="mt-5 hidden" aria-label="Add new collection draft"></div>
+            <!-- Charts & Channels Grid -->
+            <div class="analytics-charts-grid">
+              <!-- Left Chart: Weekly Activity -->
+              <div class="analytics-card">
+                <div class="analytics-card-header">
+                  <div>
+                    <h3 class="analytics-card-title">Visitor Activity &amp; Scans</h3>
+                    <p class="analytics-card-subtitle">Daily traffic breakdown over the last 7 days</p>
+                  </div>
+                  <div class="flex items-center gap-1.5 text-xs font-semibold text-gray-500">
+                    <span class="inline-block w-2.5 h-2.5 rounded-sm bg-amber-600"></span>
+                    <span>Views</span>
+                    <span class="inline-block w-2.5 h-2.5 rounded-sm bg-stone-700 ml-2"></span>
+                    <span>Scans</span>
+                  </div>
+                </div>
 
-            <!-- Collection Cards List -->
-            <div id="linksAdmin" class="mt-5 grid gap-3">
-              <div class="rounded-xl border border-dashed border-gray-200 bg-gray-50/70 p-6 text-center text-xs text-gray-500">
-                Loading collections...
+                <!-- Interactive SVG Bar Chart -->
+                <div class="chart-container">
+                  <svg id="analyticsSvgChart" class="w-full h-full" viewBox="0 0 540 190">
+                    <!-- Grid Lines -->
+                    <line x1="30" y1="150" x2="520" y2="150" stroke="#E5E7EB" stroke-dasharray="3 3"/>
+                    <line x1="30" y1="100" x2="520" y2="100" stroke="#E5E7EB" stroke-dasharray="3 3"/>
+                    <line x1="30" y1="50" x2="520" y2="50" stroke="#E5E7EB" stroke-dasharray="3 3"/>
+
+                    <!-- Y-Axis labels -->
+                    <text x="5" y="153" font-size="9" fill="#9CA3AF" font-family="sans-serif">0</text>
+                    <text x="5" y="103" font-size="9" fill="#9CA3AF" font-family="sans-serif">50</text>
+                    <text x="5" y="53" font-size="9" fill="#9CA3AF" font-family="sans-serif">100</text>
+
+                    <!-- Days & Bars (Populated Dynamically via JS) -->
+                    <g id="chartBarsGroup"></g>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Right: Channel & Conversion Breakdown -->
+              <div class="analytics-card">
+                <div class="analytics-card-header">
+                  <div>
+                    <h3 class="analytics-card-title">Inquiry Channels</h3>
+                    <p class="analytics-card-subtitle">Direct client action distribution</p>
+                  </div>
+                  <span id="statConversionRate" class="text-[11px] font-bold text-amber-700">Conversion: 0%</span>
+                </div>
+
+                <div class="space-y-3 pt-1">
+                  <div>
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="font-bold text-gray-800 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-600"></span> WhatsApp Chat
+                      </span>
+                      <span id="statWaCount" class="font-bold text-gray-900"><span class="skeleton-text w-14 h-3.5 inline-block rounded">Loading...</span></span>
+                    </div>
+                    <div class="channel-bar-wrap">
+                      <div id="barWa" class="channel-bar-fill" style="width: 0%; background: #0E7048;"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="font-bold text-gray-800 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-amber-600"></span> Contact Save (.vcf)
+                      </span>
+                      <span id="statVcardCount" class="font-bold text-gray-900"><span class="skeleton-text w-14 h-3.5 inline-block rounded">Loading...</span></span>
+                    </div>
+                    <div class="channel-bar-wrap">
+                      <div id="barVcard" class="channel-bar-fill" style="width: 0%; background: #B6713F;"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="font-bold text-gray-800 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-blue-600"></span> Phone Call
+                      </span>
+                      <span id="statCallCount" class="font-bold text-gray-900"><span class="skeleton-text w-14 h-3.5 inline-block rounded">Loading...</span></span>
+                    </div>
+                    <div class="channel-bar-wrap">
+                      <div id="barCall" class="channel-bar-fill" style="width: 0%; background: #2563EB;"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="font-bold text-gray-800 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-stone-700"></span> Visiting Card Shares
+                      </span>
+                      <span id="statShareCount" class="font-bold text-gray-900"><span class="skeleton-text w-14 h-3.5 inline-block rounded">Loading...</span></span>
+                    </div>
+                    <div class="channel-bar-wrap">
+                      <div id="barShare" class="channel-bar-fill" style="width: 0%; background: #2A201A;"></div>
+                    </div>
+                  </div>
+
+                  <div class="pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                    <span>Client Devices:</span>
+                    <span id="statDevices" class="font-bold text-gray-800">📱 Mobile: 0% &nbsp;|&nbsp; 💻 Desktop: 0%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Activity Timeline Stream -->
+            <div class="analytics-card">
+              <div class="analytics-card-header">
+                <div>
+                  <h3 class="analytics-card-title">Real-Time Client Activity</h3>
+                  <p class="analytics-card-subtitle">Live events triggered by visiting card viewers</p>
+                </div>
+                <button type="button" id="refreshAnalyticsBtn" class="btn-secondary btn-tight text-xs">
+                  <span>↺ Refresh Feed</span>
+                </button>
+              </div>
+
+              <div id="activityStream" class="activity-stream">
+                <div class="p-6 text-center text-xs text-gray-400">
+                  No client activity recorded yet. Scans and clicks from visitors will stream live here.
+                </div>
               </div>
             </div>
           </section>
 
-          <!-- PANEL 2: PROFILE & BRAND SETTINGS -->
-          <section id="profileSection" class="admin-section admin-panel" aria-label="Profile and Brand Settings Section">
-            <div class="pb-4 border-b border-gray-100">
-              <h3 class="text-lg font-extrabold text-gray-900">Profile &amp; Visual Identity</h3>
-              <p class="text-xs text-gray-500 mt-0.5">Customize your brand identity, contact channels, and digital visiting card colors.</p>
+          <!-- ================= PANEL 1: COLLECTIONS & LINKS ================= -->
+          <section id="collectionsSection" class="admin-section admin-panel" aria-label="Collections and Links Section">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-gray-100">
+              <div>
+                <h3 class="text-base font-extrabold text-gray-900">Collections &amp; Action Links</h3>
+                <p class="text-xs text-gray-500 mt-0.5">
+                  Organize links displayed on the visiting card. Add promotional badges, custom order, and use the AI fashion copywriter.
+                </p>
+              </div>
             </div>
 
-            <form id="profileForm" class="mt-6 space-y-6">
+            <!-- New Draft Collection Form (Hidden until clicked) -->
+            <div id="draftArea" class="mt-4 hidden" aria-label="Add new collection draft"></div>
+
+            <!-- Collection Cards Stream (With Shimmering Skeleton Placeholders while loading) -->
+            <div id="linksAdmin" class="mt-4 grid gap-3">
+              <div class="p-4 rounded-xl border border-gray-100 bg-white flex items-center justify-between gap-3 shadow-xs">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg skeleton-box flex-shrink-0"></div>
+                  <div class="space-y-1.5">
+                    <div class="skeleton-text w-36 h-4 rounded">Loading...</div>
+                    <div class="skeleton-text w-52 h-3 rounded"></div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="skeleton-text w-16 h-6 rounded-full"></div>
+                  <div class="skeleton-text w-8 h-8 rounded-lg"></div>
+                </div>
+              </div>
+              <div class="p-4 rounded-xl border border-gray-100 bg-white flex items-center justify-between gap-3 shadow-xs">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg skeleton-box flex-shrink-0"></div>
+                  <div class="space-y-1.5">
+                    <div class="skeleton-text w-44 h-4 rounded">Loading...</div>
+                    <div class="skeleton-text w-40 h-3 rounded"></div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="skeleton-text w-16 h-6 rounded-full"></div>
+                  <div class="skeleton-text w-8 h-8 rounded-lg"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================= PANEL 2: PROFILE & BRAND SETTINGS ================= -->
+          <section id="profileSection" class="admin-section admin-panel" aria-label="Profile and Brand Settings Section">
+            <div class="pb-3 border-b border-gray-100">
+              <h3 class="text-base font-extrabold text-gray-900">Brand Identity &amp; Digital Card Settings</h3>
+              <p class="text-xs text-gray-500 mt-0.5">Customize your brand emblem, contact channels, and boutique details.</p>
+            </div>
+
+            <form id="profileForm" class="mt-5 space-y-5">
               <!-- Section 1: Brand Info -->
               <div>
-                <h4 class="text-xs font-bold uppercase tracking-wider text-pink-600 mb-3">1. Brand Identity</h4>
-                <div class="grid gap-4 sm:grid-cols-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-amber-700 mb-3">1. Brand Identity</h4>
+                <div class="grid gap-3 sm:grid-cols-2">
                   <label class="field-label">
                     <span>Brand / Business Name</span>
-                    <input name="brandName" class="input" placeholder="Boutique Maryam" />
+                    <input name="brandName" class="input" placeholder="Maryam's Desgins" />
+                  </label>
+                  <label class="field-label">
+                    <span>Tagline / Subtitle</span>
+                    <input name="tagline" class="input" placeholder="Luxury Pret & Couture Edit" />
                   </label>
                   <label class="field-label">
                     <span>Username / Handle</span>
-                    <input name="username" class="input" placeholder="boutiquemaryam.pk" />
+                    <input name="username" class="input" placeholder="maryamsdesgins" />
+                  </label>
+                  <label class="field-label">
+                    <span>Direct Phone / Mobile</span>
+                    <input name="phone" class="input" placeholder="+92 300 0000000" />
                   </label>
 
                   <div class="sm:col-span-2">
                     <label class="field-label">
-                      <span>Logo Image URL</span>
-                      <input name="logoUrl" id="logoUrlInput" class="input" placeholder="assets/logo.png or Cloudinary URL" />
+                      <span>Brand Logo Image URL</span>
+                      <input name="logoUrl" id="logoUrlInput" class="input" placeholder="assets/maryam_logo_refinement.avif or Cloudinary URL" />
                     </label>
                     <div class="upload-row">
                       <input id="profileLogoFile" type="file" accept="image/*" class="hidden" />
@@ -186,91 +463,58 @@
                         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                         <span>Upload Logo to Cloudinary</span>
                       </button>
-                      <span class="upload-note">PNG, JPG, or WEBP with transparent background recommended</span>
+                      <span class="upload-note">PNG, JPG, AVIF, or WEBP transparent logo</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Section 2: Contact Channels -->
+              <!-- Section 2: Contact Channels & Studio Address -->
               <div class="pt-4 border-t border-gray-100">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-pink-600 mb-3">2. Contact &amp; Social Channels</h4>
-                <div class="grid gap-4 sm:grid-cols-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-amber-700 mb-3">2. Contact Channels &amp; Studio</h4>
+                <div class="grid gap-3 sm:grid-cols-2">
                   <label class="field-label">
                     <span>WhatsApp URL / Number</span>
                     <input name="whatsapp" class="input" placeholder="https://wa.me/923000000000" />
                   </label>
                   <label class="field-label">
+                    <span>Inquiries Email</span>
+                    <input name="email" class="input" placeholder="contact@maryamsdesgins.com" />
+                  </label>
+                  <label class="field-label">
+                    <span>Studio / Showroom Address</span>
+                    <input name="address" class="input" placeholder="Fashion Avenue, Karachi / Lahore" />
+                  </label>
+                  <label class="field-label">
+                    <span>Working Hours</span>
+                    <input name="hours" class="input" placeholder="Mon – Sat: 11:00 AM – 9:00 PM" />
+                  </label>
+                  <label class="field-label">
                     <span>Instagram URL</span>
-                    <input name="instagram" class="input" placeholder="https://instagram.com/username" />
+                    <input name="instagram" class="input" placeholder="https://instagram.com/maryamsdesgins" />
                   </label>
                   <label class="field-label">
                     <span>Facebook URL</span>
-                    <input name="facebook" class="input" placeholder="https://facebook.com/page" />
+                    <input name="facebook" class="input" placeholder="https://facebook.com/maryamsdesgins" />
                   </label>
                   <label class="field-label">
-                    <span>Website URL</span>
-                    <input name="website" class="input" placeholder="https://boutiquemaryam.pk" />
+                    <span>Official Website</span>
+                    <input name="website" class="input" placeholder="https://maryamsdesgins.com" />
                   </label>
                   <label class="field-label">
                     <span>TikTok URL</span>
-                    <input name="tiktok" class="input" placeholder="https://tiktok.com/@username" />
+                    <input name="tiktok" class="input" placeholder="https://tiktok.com/@maryamsdesgins" />
                   </label>
-                  <label class="field-label">
+                  <label class="field-label sm:col-span-2">
                     <span>Pinterest URL</span>
-                    <input name="pinterest" class="input" placeholder="https://pinterest.com/username" />
-                  </label>
-                </div>
-              </div>
-
-              <!-- Section 3: Visual Theme Palette -->
-              <div class="pt-4 border-t border-gray-100">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-pink-600 mb-2">3. Visual Theme &amp; Colors</h4>
-                <p class="text-xs text-gray-500 mb-3">Select a curated luxury preset or customize each color surface:</p>
-
-                <!-- Curated Preset Buttons -->
-                <div class="palette-preset-row">
-                  <button type="button" class="palette-preset-btn" data-preset="rose">
-                    <span class="palette-dot" style="background: #ffffff; border-color: #d8328b;"></span>
-                    <span>Rose Couture (Default)</span>
-                  </button>
-                  <button type="button" class="palette-preset-btn" data-preset="noir">
-                    <span class="palette-dot" style="background: #111114;"></span>
-                    <span>Minimal Noir</span>
-                  </button>
-                  <button type="button" class="palette-preset-btn" data-preset="gold">
-                    <span class="palette-dot" style="background: #faf6ee; border-color: #c29d59;"></span>
-                    <span>Champagne Gold</span>
-                  </button>
-                  <button type="button" class="palette-preset-btn" data-preset="ivory">
-                    <span class="palette-dot" style="background: #fbfbfc;"></span>
-                    <span>Pure Ivory</span>
-                  </button>
-                </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  <label class="field-label">
-                    <span>Card Background</span>
-                    <input name="themeBg" type="color" class="color-input" value="#ffffff" />
-                  </label>
-                  <label class="field-label">
-                    <span>Page Canvas</span>
-                    <input name="pageBg" type="color" class="color-input" value="#faf9fb" />
-                  </label>
-                  <label class="field-label">
-                    <span>Link Button Fill</span>
-                    <input name="buttonBg" type="color" class="color-input" value="#ffffff" />
-                  </label>
-                  <label class="field-label">
-                    <span>Text Color</span>
-                    <input name="textColor" type="color" class="color-input" value="#0f0f14" />
+                    <input name="pinterest" class="input" placeholder="https://pinterest.com/maryamsdesgins" />
                   </label>
                 </div>
               </div>
 
               <!-- Submit -->
               <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                <span class="text-xs text-gray-500">Changes will instantly sync to all visitors in real-time.</span>
+                <span class="text-xs text-gray-500">Changes sync instantly to all visitors in real-time.</span>
                 <button type="button" id="saveProfileBtn" class="btn-primary">
                   <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
                   <span>Save Profile</span>
@@ -279,39 +523,329 @@
             </form>
           </section>
 
-          <!-- PANEL 3: CLOUDINARY MEDIA SETUP -->
-          <section id="overviewSection" class="admin-section admin-panel" aria-label="Cloudinary Media Setup Section">
-            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-gray-100">
+          <!-- ================= PANEL 3: DEDICATED LUXURY COLOR PALETTE & THEME ================= -->
+          <section id="paletteSection" class="admin-section admin-panel" aria-label="Luxury Color Palette Section">
+            <div class="pb-3 border-b border-gray-100 flex items-center justify-between flex-wrap gap-2">
               <div>
-                <h3 class="text-lg font-extrabold text-gray-900">Cloudinary Media Hub</h3>
+                <h3 class="text-base font-extrabold text-gray-900">Luxury Color Palette &amp; Theme</h3>
+                <p class="text-xs text-gray-500 mt-0.5">Dedicated settings for your digital visiting card's aesthetic, colors, and typography.</p>
+              </div>
+            </div>
+
+            <!-- Curated Luxury Theme Presets -->
+            <div class="mt-5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-amber-700 mb-2">1-Click Curated Luxury Palettes</h4>
+              <p class="text-xs text-gray-500 mb-3">Choose a luxury designer palette for your visiting card:</p>
+
+              <div class="palette-preset-row">
+                <button type="button" class="palette-preset-btn" data-preset="cinnamon">
+                  <span class="palette-dot" style="background: #ffffff; border-color: #B6713F;"></span>
+                  <span>Cinnamon Bronze (Signature Haute Couture)</span>
+                </button>
+                <button type="button" class="palette-preset-btn" data-preset="noir">
+                  <span class="palette-dot" style="background: #2A201A; border-color: #D49A6A;"></span>
+                  <span>Espresso Noir (Executive Midnight)</span>
+                </button>
+                <button type="button" class="palette-preset-btn" data-preset="gold">
+                  <span class="palette-dot" style="background: #FAF7F2; border-color: #D49A6A;"></span>
+                  <span>Champagne Gold (Royal Festive)</span>
+                </button>
+                <button type="button" class="palette-preset-btn" data-preset="ivory">
+                  <span class="palette-dot" style="background: #FFFFFF; border-color: #B3A59B;"></span>
+                  <span>Pure Ivory (Pearl Minimalist)</span>
+                </button>
+              </div>
+
+              <!-- Color Customization Inputs -->
+              <form id="themeForm" class="mt-4 p-5 rounded-2xl border border-gray-200 bg-white space-y-4">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-amber-700 mb-1">Fine-Tune Surface Colors</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <label class="field-label">
+                    <span>Card Face Background</span>
+                    <input name="themeBg" type="color" class="color-input" value="#FFFFFF" />
+                  </label>
+                  <label class="field-label">
+                    <span>Page Ambient Canvas</span>
+                    <input name="pageBg" type="color" class="color-input" value="#FAF7F2" />
+                  </label>
+                  <label class="field-label">
+                    <span>Link Pill Surface</span>
+                    <input name="buttonBg" type="color" class="color-input" value="#FFFFFF" />
+                  </label>
+                  <label class="field-label">
+                    <span>Typography Color</span>
+                    <input name="textColor" type="color" class="color-input" value="#2A201A" />
+                  </label>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-gray-100">
+                  <label class="field-label">
+                    <span>Brand Primary Accent</span>
+                    <input name="accentColor" type="color" class="color-input" value="#B6713F" />
+                  </label>
+                  <label class="field-label col-span-1 sm:col-span-3">
+                    <span>Typography Font Pairing</span>
+                    <select name="fontFamily" class="input">
+                      <option value="playfair">Playfair Display (Haute Couture Serif) + Plus Jakarta Sans</option>
+                      <option value="modern">Plus Jakarta Sans (Minimal Modern Editorial)</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+                  <span class="text-xs text-gray-500">Changes apply to visiting card surfaces in real-time.</span>
+                  <button type="button" id="saveThemeBtn" class="btn-primary">
+                    <span>Save Color Palette</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <!-- ================= PANEL 4: QR CODE STUDIO & SETTINGS ================= -->
+          <section id="qrSection" class="admin-section admin-panel" aria-label="QR Code Studio Section">
+            <div class="pb-3 border-b border-gray-100">
+              <h3 class="text-base font-extrabold text-gray-900">QR Code Studio &amp; Customizer</h3>
+              <p class="text-xs text-gray-500 mt-0.5">Customize color, embedded payload, resolution, and print format for your visiting card QR code.</p>
+            </div>
+
+            <div class="qr-studio-layout mt-5">
+              <!-- Left: QR Settings Controls -->
+              <div class="space-y-4">
+                <div class="p-5 rounded-2xl border border-gray-200 bg-white space-y-4">
+                  <h4 class="text-xs font-bold uppercase tracking-wider text-amber-700">1. Destination &amp; Scan Payload</h4>
+                  
+                  <label class="field-label">
+                    <span>Scan Action Type</span>
+                    <select id="qrTypeSelect" class="input">
+                      <option value="url">Digital Visiting Card Web Link (Recommended)</option>
+                      <option value="vcard">Direct Address Book vCard (Save contact instantly without browser)</option>
+                      <option value="whatsapp">Instant WhatsApp Inquiry Link</option>
+                      <option value="custom">Custom URL / Text</option>
+                    </select>
+                  </label>
+
+                  <label id="qrCustomUrlWrap" class="field-label hidden">
+                    <span>Custom Destination URL</span>
+                    <input id="qrCustomUrlInput" class="input" placeholder="https://maryamsdesign.com" />
+                  </label>
+
+                  <div class="pt-3 border-t border-gray-100">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-amber-700 mb-3">2. Color &amp; Visual Style</h4>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                      <label class="field-label">
+                        <span>QR Code Color (Foreground)</span>
+                        <div class="flex items-center gap-2">
+                          <input id="qrFgColorInput" type="color" class="color-input" value="#2A201A" />
+                          <span id="qrFgHex" class="text-xs font-mono font-bold text-gray-600">#2A201A</span>
+                        </div>
+                      </label>
+
+                      <label class="field-label">
+                        <span>QR Background Color</span>
+                        <div class="flex items-center gap-2">
+                          <input id="qrBgColorInput" type="color" class="color-input" value="#FFFFFF" />
+                          <span id="qrBgHex" class="text-xs font-mono font-bold text-gray-600">#FFFFFF</span>
+                        </div>
+                      </label>
+                    </div>
+
+                    <!-- Preset Color Swatches -->
+                    <div class="mt-3 flex items-center gap-2 flex-wrap">
+                      <span class="text-[11px] font-bold text-gray-400">Presets:</span>
+                      <button type="button" class="btn-secondary btn-tight text-[11px] py-1 qr-color-preset" data-fg="#2A201A" data-bg="#FFFFFF">Espresso / White</button>
+                      <button type="button" class="btn-secondary btn-tight text-[11px] py-1 qr-color-preset" data-fg="#B6713F" data-bg="#FFFFFF">Cinnamon / White</button>
+                      <button type="button" class="btn-secondary btn-tight text-[11px] py-1 qr-color-preset" data-fg="#D49A6A" data-bg="#2A201A">Gold / Dark</button>
+                      <button type="button" class="btn-secondary btn-tight text-[11px] py-1 qr-color-preset" data-fg="#000000" data-bg="#FFFFFF">Pure Black</button>
+                    </div>
+                  </div>
+
+                  <div class="pt-3 border-t border-gray-100">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-amber-700 mb-3">3. Dimensions &amp; Quality</h4>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                      <label class="field-label">
+                        <span>Resolution Size (<span id="qrSizeVal">300</span>px)</span>
+                        <input id="qrSizeSlider" type="range" min="180" max="600" step="20" value="300" class="w-full accent-amber-700 mt-2" />
+                      </label>
+
+                      <label class="field-label">
+                        <span>Margin / Quiet Zone (<span id="qrMarginVal">4</span>)</span>
+                        <input id="qrMarginSlider" type="range" min="0" max="8" step="1" value="4" class="w-full accent-amber-700 mt-2" />
+                      </label>
+                    </div>
+
+                    <label class="field-label mt-3">
+                      <span>Error Correction Level</span>
+                      <select id="qrEccSelect" class="input">
+                        <option value="H">High (30% redundancy - Best for logo overlays)</option>
+                        <option value="Q">Quartile (25% redundancy)</option>
+                        <option value="M" selected>Medium (15% redundancy - Standard)</option>
+                        <option value="L">Low (7% redundancy - Fast scan)</option>
+                      </select>
+                    </label>
+
+                    <div class="mt-3 flex items-center gap-2">
+                      <input id="qrCenterLogoToggle" type="checkbox" checked class="w-4 h-4 rounded text-amber-700 accent-amber-700" />
+                      <label for="qrCenterLogoToggle" class="text-xs font-semibold text-gray-800">
+                        Overlay Maryam's Desgins emblem monogram in center
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Live Interactive Preview & Export Card -->
+              <div class="space-y-4">
+                <div class="qr-preview-box">
+                  <span class="text-xs font-bold uppercase tracking-wider text-amber-800 mb-3">Live Scannable Preview</span>
+
+                  <!-- Visual QR Frame -->
+                  <div class="qr-frame">
+                    <img id="qrStudioPreviewImg" src="" alt="Live Generated QR Code" width="220" height="220" />
+                    <div id="qrCenterLogoBadge" class="qr-center-logo">
+                      <img src="assets/maryam_logo_refinement.avif" onerror="this.src='assets/logo.png'" alt="Center Emblem" />
+                    </div>
+                  </div>
+
+                  <p class="text-xs text-gray-500 mt-3 max-w-[220px]">
+                    Point any smartphone camera to test instant detection.
+                  </p>
+
+                  <!-- QR Export Buttons -->
+                  <div class="qr-action-btn-group">
+                    <button type="button" id="saveQrToCardBackBtn" class="btn-primary w-full flex items-center justify-center gap-2">
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline></svg>
+                      <span>Apply to Visiting Card Back Face</span>
+                    </button>
+
+                    <button type="button" id="downloadQrPngBtn" class="btn-secondary w-full flex items-center justify-center gap-2">
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                      <span>Download QR Image (High-Res PNG)</span>
+                    </button>
+
+                    <button type="button" id="printCardLayoutBtn" class="btn-secondary w-full flex items-center justify-center gap-2">
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                      <span>Print Visiting Card Sheet</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================= PANEL 5: MULTI-BRAND MANAGER ================= -->
+          <section id="brandsSection" class="admin-section admin-panel" aria-label="Multi-Brand Management Section">
+            <div class="pb-3 border-b border-gray-100 flex items-center justify-between flex-wrap gap-2">
+              <div>
+                <h3 class="text-base font-extrabold text-gray-900">Multi-Brand &amp; Multi-Profile Hub</h3>
+                <p class="text-xs text-gray-500 mt-0.5">Create and manage multiple brands or distinct visiting cards from a single admin account.</p>
+              </div>
+              <button type="button" id="openCreateBrandModalBtn" class="btn-primary text-xs">
+                <span>+ Create New Brand</span>
+              </button>
+            </div>
+
+            <!-- Create New Brand Form Box -->
+            <div id="newBrandFormCard" class="mt-4 p-4 rounded-xl border border-amber-200/70 bg-amber-50/40 hidden">
+              <h4 class="text-sm font-bold text-gray-900 mb-3">Add New Brand / Visiting Card</h4>
+              <div class="grid gap-3 sm:grid-cols-2">
+                <label class="field-label">
+                  <span>Brand Name *</span>
+                  <input id="newBrandNameInput" class="input" placeholder="Example: Maryam Bridal Couture" />
+                </label>
+                <label class="field-label">
+                  <span>Brand Slug / URL ID *</span>
+                  <input id="newBrandSlugInput" class="input" placeholder="e.g. bridal or couture" />
+                </label>
+                <label class="field-label">
+                  <span>Tagline</span>
+                  <input id="newBrandTaglineInput" class="input" placeholder="Handcrafted Wedding Ensembles" />
+                </label>
+                <label class="field-label">
+                  <span>WhatsApp / Phone</span>
+                  <input id="newBrandPhoneInput" class="input" placeholder="+92 300 0000000" />
+                </label>
+              </div>
+              <div class="mt-4 flex items-center gap-2">
+                <button type="button" id="saveNewBrandBtn" class="btn-primary text-xs">Save &amp; Switch to Brand</button>
+                <button type="button" id="cancelNewBrandBtn" class="btn-secondary text-xs">Cancel</button>
+              </div>
+            </div>
+
+            <!-- List of Existing Brands -->
+            <div class="mt-5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">Active &amp; Configured Brands</h4>
+              <div id="brandsListContainer" class="grid gap-3">
+                <!-- Dynamically rendered -->
+              </div>
+            </div>
+          </section>
+
+          <!-- ================= PANEL 6: CLOUDINARY MEDIA HUB ================= -->
+          <section id="overviewSection" class="admin-section admin-panel" aria-label="Cloudinary Media Setup Section">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-gray-100">
+              <div>
+                <h3 class="text-base font-extrabold text-gray-900">Cloudinary Media Hub</h3>
                 <p class="text-xs text-gray-500 mt-0.5">Upload high-resolution logos and collection images directly to your cloud CDN.</p>
               </div>
               <span id="cloudinaryStatus" class="admin-chip admin-chip-muted">Checking...</span>
             </div>
 
-            <div class="mt-5 space-y-4">
-              <div class="rounded-xl border border-pink-100 bg-pink-50/50 p-4 text-xs leading-relaxed text-gray-700">
-                <p class="font-bold text-gray-900 mb-1">How unsigned uploads work:</p>
+            <div class="mt-4 space-y-4">
+              <div class="rounded-xl border border-amber-200/80 bg-amber-50/50 p-4 text-xs leading-relaxed text-gray-700">
+                <p class="font-bold text-gray-900 mb-1">Unsigned Browser Upload Active</p>
                 <p>
-                  Unsigned upload preset <code class="font-bold text-pink-700 bg-white px-1.5 py-0.5 rounded border border-pink-200">ml_default</code>
-                  is linked in <code class="bg-white px-1.5 py-0.5 rounded border border-pink-200">js/cloudinary-config.js</code>.
-                  Paste your <strong>Cloud Name</strong> from your Cloudinary console into that file to enable instant image uploads.
-                </p>
-                <p class="mt-2 text-rose-700 font-semibold">
-                  Note: Do not paste your API Secret in frontend code. Unsigned uploads only require your Cloud Name and Upload Preset.
+                  Upload preset <code class="font-bold text-amber-800 bg-white px-1.5 py-0.5 rounded border border-amber-200">ml_default</code>
+                  and Cloud Name <code class="font-bold text-amber-800 bg-white px-1.5 py-0.5 rounded border border-amber-200">dis6nrztz</code>
+                  are active in <code class="bg-white px-1.5 py-0.5 rounded border border-amber-200">js/cloudinary-config.js</code>.
                 </p>
               </div>
 
               <div class="rounded-xl border border-gray-200 bg-white p-4">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Configuration Reference</h4>
                 <pre class="bg-gray-50 rounded-lg p-3 text-[11px] font-mono text-gray-800 border border-gray-100 overflow-x-auto"><code>window.cloudinaryConfig = {
-  cloudName: "your-cloud-name",
+  cloudName: "dis6nrztz",
   uploadPreset: "ml_default",
   folder: "boutique-maryam"
 };</code></pre>
               </div>
 
-              <p id="cloudinaryHelp" class="text-xs font-bold text-pink-700"></p>
+              <p id="cloudinaryHelp" class="text-xs font-bold text-amber-800"></p>
+            </div>
+          </section>
+
+          <!-- ================= PANEL 7: SYSTEM & BACKUPS ================= -->
+          <section id="settingsSection" class="admin-section admin-panel" aria-label="System Settings Section">
+            <div class="pb-3 border-b border-gray-100">
+              <h3 class="text-base font-extrabold text-gray-900">System, Backups &amp; Data Hub</h3>
+              <p class="text-xs text-gray-500 mt-0.5">Export backups, import configuration, or reset visitor analytics counters.</p>
+            </div>
+
+            <div class="mt-5 space-y-4">
+              <div class="p-5 rounded-2xl border border-gray-200 bg-white">
+                <h4 class="text-sm font-extrabold text-gray-900 mb-1">Backup &amp; Export Data</h4>
+                <p class="text-xs text-gray-500 mb-4">Export all your current collections, profile configuration, and brand settings into a single JSON file.</p>
+                
+                <div class="flex items-center gap-3 flex-wrap">
+                  <button type="button" id="exportDataBtn" class="btn-primary text-xs">
+                    <span>Export Full Data Backup (JSON)</span>
+                  </button>
+                  <label class="btn-secondary text-xs cursor-pointer">
+                    <span>Import Data Backup</span>
+                    <input id="importDataInput" type="file" accept=".json" class="hidden" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="p-5 rounded-2xl border border-rose-100 bg-rose-50/40">
+                <h4 class="text-sm font-extrabold text-rose-950 mb-1">Reset Analytics Data</h4>
+                <p class="text-xs text-rose-800/80 mb-3">Clear local visitor counts, inquiry metrics, and activity timeline to start fresh.</p>
+                <button type="button" id="resetAnalyticsBtn" class="btn-danger text-xs">
+                  <span>Reset Analytics Counters</span>
+                </button>
+              </div>
             </div>
           </section>
         </div>

@@ -3,132 +3,352 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Boutique Maryam — Premium Digital Identity & Collections</title>
-  <meta name="description" content="Discover luxury pret, unstitched lawn, festive edits, and boutique fashion collections from Boutique Maryam. Save contact and connect directly." />
-  <meta name="theme-color" content="#faf8fb" />
+  <title>Maryam's Desgins — Premium Digital Visiting Card &amp; Couture Collections</title>
+  <meta name="description" content="Official digital visiting card for Maryam's Desgins. Explore luxury pret, festive edits, bespoke bridal couture, and connect directly on WhatsApp." />
+  <meta name="theme-color" content="#FAF7F2" />
 
   <!-- Preconnect for High-Speed Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS & Custom Design System -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="public-body">
-  <main class="min-h-screen px-3 py-6 sm:px-6 sm:py-10 flex flex-col justify-center">
+  <main class="min-h-screen px-3 py-4 sm:px-6 sm:py-8 flex flex-col justify-center items-center">
     <div class="card-outer-wrap">
-      <!-- Digital Visiting Card Container -->
-      <article id="phoneCard" class="phone-scroll" aria-label="Digital Visiting Card for Boutique Maryam">
-        <!-- Ambient Subtle Top Glow -->
-        <div class="card-ambient-glow" aria-hidden="true"></div>
+      <!-- Ambient Luxury Glow -->
+      <div class="card-ambient-glow" aria-hidden="true"></div>
 
-        <!-- Card Header: Brand Identity -->
-        <header class="card-header-identity">
-          <!-- Verified Badge -->
-          <div class="verified-identity-badge" title="Verified Digital Visiting Card">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
-            <span>Verified Boutique</span>
+      <!-- ===================================================================
+           THE DIGITAL VISITING CARD (AUTHENTIC 3D FLIPPABLE SLAB)
+           =================================================================== -->
+      <div class="visiting-card-perspective">
+        <article id="phoneCard" class="visiting-card-flipper" aria-label="Digital Business Card for Maryam's Desgins">
+          
+          <!-- ================= FRONT FACE: EXECUTIVE VISITING CARD ================= -->
+          <div class="card-face card-face-front">
+            <div class="card-foil-border" aria-hidden="true"></div>
+            <div class="card-specular-sheen" aria-hidden="true"></div>
+
+            <!-- Top Utility Bar: Chip + Verified Badge + Flip Trigger -->
+            <div class="card-top-row">
+              <div class="card-chip-badge" title="NFC Enabled Digital Visiting Card">
+                <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                  <line x1="7" y1="15" x2="7.01" y2="15"></line>
+                  <line x1="11" y1="15" x2="13" y2="15"></line>
+                </svg>
+                <span>NFC Smart Card</span>
+              </div>
+
+              <div class="verified-identity-badge" title="Verified Digital Card">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <span>Verified Brand</span>
+              </div>
+
+              <button id="flipToBackBtn" type="button" class="card-flip-btn" title="Flip card to scan QR Code" aria-label="Flip visiting card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 12v-3a4 4 0 0 1 4-4h12m0 0l-4-4m4 4l-4 4M20 12v3a4 4 0 0 1-4 4H4m0 0l4 4m-4-4l4-4"/>
+                </svg>
+                <span>QR / Flip</span>
+              </button>
+            </div>
+
+            <!-- Brand Logo / Emblem -->
+            <div class="brand-avatar-frame">
+              <div class="brand-avatar-halo">
+                <div class="brand-avatar-inner">
+                  <img id="previewLogo" src="assets/maryam_logo_refinement.avif" alt="Maryam's Desgins Official Logo" onerror="this.src='assets/logo.png'" width="96" height="96" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Brand Identity Typography -->
+            <h1 id="previewBrand" class="card-brand-title"><span class="skeleton-text w-40 h-7 inline-block rounded">Loading...</span></h1>
+            <p id="previewTagline" class="brand-tagline"><span class="skeleton-text w-52 h-4 inline-block rounded">Loading...</span></p>
+
+            <!-- Username / Handle Pill -->
+            <button id="previewUsername" type="button" title="Click to copy card link" aria-label="Copy digital card link">
+              <span><span class="skeleton-text w-24 h-3.5 inline-block rounded">Loading...</span></span>
+              <svg class="w-3.5 h-3.5 ml-0.5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+
+            <!-- Primary Quick Actions: Save Contact & Share Card -->
+            <div class="card-action-bar">
+              <button id="saveContactBtn" type="button" class="card-action-btn card-action-primary" aria-label="Save contact to phone address book">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="8.5" cy="7" r="4"></circle>
+                  <line x1="20" y1="8" x2="20" y2="14"></line>
+                  <line x1="23" y1="11" x2="17" y2="11"></line>
+                </svg>
+                <span>Save Contact</span>
+              </button>
+
+              <button id="shareCardBtn" type="button" class="card-action-btn card-action-secondary" aria-label="Share digital card or show QR code">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+                <span>Share Card</span>
+              </button>
+            </div>
+
+            <!-- Quick-Touch Direct Channels (Call, WhatsApp, Email, Studio Map) -->
+            <div class="card-quick-touch-grid">
+              <a id="callLink" href="#" class="quick-touch-btn" title="Call Boutique">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <span>Call</span>
+              </a>
+
+              <a id="cardWhatsappBtn" href="#" target="_blank" rel="noopener noreferrer" class="quick-touch-btn is-wa" title="WhatsApp Chat">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.7 1.5c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.4ZM12.1 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 1 1 8.4 4.7Zm5.4-7.4c-.3-.2-1.7-.9-2-.9-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.4-1.5-.9-.8-1.5-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4Z"/>
+                </svg>
+                <span>WhatsApp</span>
+              </a>
+
+              <a id="emailLink" href="#" class="quick-touch-btn" title="Send Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Email</span>
+              </a>
+
+              <a id="directionsLink" href="#" target="_blank" rel="noopener noreferrer" class="quick-touch-btn" title="Studio Directions">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Studio</span>
+              </a>
+            </div>
+
+            <!-- Social Media Hub -->
+            <nav class="social-grid-wrap" aria-label="Social media channels">
+              <a id="whatsappLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp-icon" aria-label="WhatsApp" title="WhatsApp">
+                <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.7 1.5c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.4ZM12.1 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 1 1 8.4 4.7Zm5.4-7.4c-.3-.2-1.7-.9-2-.9-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.4-1.5-.9-.8-1.5-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4Z"/></svg>
+              </a>
+              <a id="instagramLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn instagram-icon" aria-label="Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm8.8 2.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 2a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Z"/></svg>
+              </a>
+              <a id="facebookLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn facebook-icon" aria-label="Facebook" title="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.8l.5-3.2h-3.3V8.5c0-.9.3-1.6 1.7-1.6h1.8V4.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.1H7.1v3.2H10V22h3.5Z"/></svg>
+              </a>
+              <a id="tiktokLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn tiktok-icon" aria-label="TikTok" title="TikTok">
+                <svg viewBox="0 0 24 24"><path d="M16.7 2c.3 2.5 1.7 4 4.2 4.2v3.2a7.8 7.8 0 0 1-4.1-1.2v6.4c0 4.1-2.5 7.4-7 7.4-3.7 0-6.7-2.5-6.7-6.3 0-4.4 3.7-6.9 7.8-6.2v3.4c-1.9-.6-4.4.5-4.4 2.8 0 1.6 1.3 2.8 3.1 2.8 2 0 3.3-1.2 3.3-3.9V2h3.8Z"/></svg>
+              </a>
+              <a id="pinterestLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn pinterest-icon" aria-label="Pinterest" title="Pinterest">
+                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 .1-2.9l1.2-5.1s-.3-.6-.3-1.5c0-1.4.8-2.5 1.8-2.5.9 0 1.3.6 1.3 1.4 0 .9-.6 2.2-.9 3.4-.2 1 .5 1.9 1.6 1.9 1.9 0 3.3-2 3.3-4.9 0-2.6-1.8-4.4-4.5-4.4-3.1 0-4.9 2.3-4.9 4.7 0 .9.4 1.9.8 2.5.1.1.1.2.1.4l-.3 1.2c0 .2-.2.3-.4.2-1.4-.7-2.3-2.7-2.3-4.4C5 7.7 7.6 4.6 12.3 4.6c3.8 0 6.8 2.7 6.8 6.4 0 3.8-2.4 6.9-5.7 6.9-1.1 0-2.2-.6-2.5-1.3l-.7 2.6c-.3.9-1 2.1-1.4 2.8A10 10 0 1 0 12 2Z"/></svg>
+              </a>
+              <a id="websiteLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn website-icon" aria-label="Website" title="Website">
+                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 9h-3.1a15.2 15.2 0 0 0-1.1-5.1A8 8 0 0 1 18.9 11ZM12 4.1c.7 1 1.5 3.1 1.7 6.9h-3.4c.2-3.8 1-5.9 1.7-6.9ZM4.3 13h3.9a15.2 15.2 0 0 0 1.1 5.1A8 8 0 0 1 4.3 13Zm3.9-2H5.1a8 8 0 0 1 4.2-5.1A15.2 15.2 0 0 0 8.2 11Zm3.8 8.9c-.7-1-1.5-3.1-1.7-6.9h3.4c-.2 3.8-1 5.9-1.7 6.9Zm2.7-1.8a15.2 15.2 0 0 0 1.1-5.1h3.1a8 8 0 0 1-4.2 5.1Z"/></svg>
+              </a>
+            </nav>
           </div>
 
-          <!-- Profile / Brand Logo with Halo -->
-          <div class="brand-avatar-frame">
-            <div class="brand-avatar-halo">
-              <div class="brand-avatar-inner">
-                <img id="previewLogo" src="assets/logo.png" alt="Boutique Maryam Official Logo" width="80" height="80" />
+          <!-- ================= BACK FACE: QR CODE & STUDIO VERIFICATION ================= -->
+          <div class="card-face card-face-back">
+            <div class="card-foil-border" aria-hidden="true"></div>
+
+            <!-- Top Row with Flip Back button -->
+            <div class="card-top-row">
+              <div class="verified-identity-badge">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <span>Instant Scan</span>
               </div>
+              <button id="flipToFrontBtn" type="button" class="card-flip-btn" title="Flip to card front" aria-label="Flip back to card front">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 12v-3a4 4 0 0 1 4-4h12m0 0l-4-4m4 4l-4 4M20 12v3a4 4 0 0 1-4 4H4m0 0l4 4m-4-4l4-4"/>
+                </svg>
+                <span>Front ↺</span>
+              </button>
+            </div>
+
+            <!-- Centered QR Code with Target Corners -->
+            <div class="back-qr-frame">
+              <div class="back-qr-corners"></div>
+              <img id="backQrImg" src="" alt="Direct Scan QR Code" width="170" height="170" />
+            </div>
+            <p class="back-qr-label">Point camera to scan &amp; save contact</p>
+
+            <!-- Studio Details on Card Back -->
+            <div class="back-info-list">
+              <div class="back-info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span id="backPhoneText"><span class="skeleton-text w-32 h-3.5 inline-block rounded">Loading...</span></span>
+              </div>
+              <div class="back-info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span id="backAddressText"><span class="skeleton-text w-44 h-3.5 inline-block rounded">Loading...</span></span>
+              </div>
+              <div class="back-info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span id="backHoursText"><span class="skeleton-text w-36 h-3.5 inline-block rounded">Loading...</span></span>
+              </div>
+            </div>
+
+            <!-- Security Verification Badge -->
+            <div class="back-security-chip">
+              <span>TOKEN: </span>
+              <code id="backSecurityToken"><span class="skeleton-text w-24 h-3.5 inline-block rounded">Loading...</span></code>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- ===================================================================
+           INTERACTIVE TABS NAVIGATION (COLLECTIONS, ABOUT, SERVICES, INQUIRY)
+           =================================================================== -->
+      <nav class="card-tabs-nav" aria-label="Visiting Card Sections">
+        <button type="button" class="card-tab-btn is-active" data-tab="tabCollections">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Collections</span>
+        </button>
+        <button type="button" class="card-tab-btn" data-tab="tabAbout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <span>About</span>
+        </button>
+        <button type="button" class="card-tab-btn" data-tab="tabServices">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>Services</span>
+        </button>
+        <button type="button" class="card-tab-btn" data-tab="tabContact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span>Inquiry</span>
+        </button>
+      </nav>
+
+      <!-- TAB 1: COLLECTIONS & LINKS (FIRESTORE SYNCED) -->
+      <section id="tabCollections" class="card-tab-content is-active" aria-label="Collections and Catalog Links">
+        <div id="linksPublic">
+          <!-- Shimmering Skeleton Placeholders while Firestore loads -->
+          <div class="link-pill skeleton-box h-[68px]" aria-hidden="true"></div>
+          <div class="link-pill skeleton-box h-[68px]" aria-hidden="true"></div>
+          <div class="link-pill skeleton-box h-[68px]" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- TAB 2: ABOUT & BRAND HERITAGE -->
+      <section id="tabAbout" class="card-tab-content" aria-label="Brand Heritage and Story">
+        <div class="editorial-card">
+          <h3 class="editorial-title">Artisanal Pret &amp; Couture</h3>
+          <p id="aboutStoryText" class="editorial-body">
+            <span class="skeleton-text w-full h-4 inline-block rounded mb-1.5">Loading...</span>
+            <span class="skeleton-text w-5/6 h-4 inline-block rounded mb-1.5"></span>
+            <span class="skeleton-text w-2/3 h-4 inline-block rounded"></span>
+          </p>
+          <div class="editorial-grid">
+            <div class="editorial-feature">
+              <span class="editorial-feature-icon">✨</span>
+              <h4>Handcrafted Elegance</h4>
+              <p>Meticulous zardozi, resham, and gotta embellishments.</p>
+            </div>
+            <div class="editorial-feature">
+              <span class="editorial-feature-icon">🌿</span>
+              <h4>Pure Luxury Fabrics</h4>
+              <p>Airy summer lawns, pure chiffons, and raw silks.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: BESPOKE SERVICES -->
+      <section id="tabServices" class="card-tab-content" aria-label="Boutique Services">
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-badge">Bespoke Couture</div>
+            <h4>Custom Bridal &amp; Formal Edit</h4>
+            <p>One-on-one bridal consultations and made-to-measure couture for weddings and festive occasions.</p>
+            <a id="serviceBridalLink" href="#" target="_blank" rel="noopener noreferrer" class="service-link">
+              <span>Book Consultation on WhatsApp</span>
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-badge">Worldwide Courier</div>
+            <h4>International Tracked Shipping</h4>
+            <p>Fast and secure door-to-door delivery across USA, UK, Canada, UAE, Saudi Arabia, and Europe.</p>
+            <a id="serviceShippingLink" href="#" target="_blank" rel="noopener noreferrer" class="service-link">
+              <span>Inquire Shipping Rates</span>
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: DIRECT INQUIRY & CONTACT CHANNELS -->
+      <section id="tabContact" class="card-tab-content" aria-label="Direct Inquiry Channels">
+        <div class="contact-details-card">
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.7 1.5c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.4ZM12.1 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 1 1 8.4 4.7Zm5.4-7.4c-.3-.2-1.7-.9-2-.9-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.4-1.5-.9-.8-1.5-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4Z"/></svg>
+            </div>
+            <div>
+              <p class="contact-label">Direct WhatsApp</p>
+              <a id="tabWaLink" href="#" class="contact-val" target="_blank" rel="noopener noreferrer"><span class="skeleton-text w-32 h-4 inline-block rounded">Loading...</span></a>
             </div>
           </div>
 
-          <!-- Brand Typography -->
-          <h1 id="previewBrand">Boutique Maryam</h1>
-          <p class="brand-tagline">Luxury Pret &amp; Couture Collections</p>
-
-          <!-- Username & Copy Link Badge -->
-          <button id="previewUsername" type="button" title="Click to copy card link" aria-label="Copy digital card link">
-            <span>Loading....</span>
-            <svg class="w-3.5 h-3.5 ml-0.5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-          </button>
-
-          <!-- Quick Action Buttons: Save Contact & Share Card -->
-          <div class="card-action-bar">
-            <button id="saveContactBtn" type="button" class="card-action-btn card-action-primary" aria-label="Save contact to phone address book">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="8.5" cy="7" r="4"></circle>
-                <line x1="20" y1="8" x2="20" y2="14"></line>
-                <line x1="23" y1="11" x2="17" y2="11"></line>
-              </svg>
-              <span>Save Contact</span>
-            </button>
-
-            <button id="shareCardBtn" type="button" class="card-action-btn card-action-secondary" aria-label="Share digital card or show QR code">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="18" cy="5" r="3"></circle>
-                <circle cx="6" cy="12" r="3"></circle>
-                <circle cx="18" cy="19" r="3"></circle>
-                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-              </svg>
-              <span>Share Card</span>
-            </button>
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div>
+              <p class="contact-label">Boutique Inquiries Email</p>
+              <a id="tabEmailLink" href="#" class="contact-val"><span class="skeleton-text w-44 h-4 inline-block rounded">Loading...</span></a>
+            </div>
           </div>
 
-          <!-- Social Media Grid -->
-          <nav class="social-grid-wrap" aria-label="Social media connections">
-            <a id="whatsappLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp-icon" aria-label="Chat on WhatsApp" title="WhatsApp">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.7 1.5c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.4ZM12.1 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 1 1 8.4 4.7Zm5.4-7.4c-.3-.2-1.7-.9-2-.9-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.4-1.5-.9-.8-1.5-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4Z"/></svg>
-            </a>
-            <a id="instagramLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn instagram-icon" aria-label="Instagram Profile" title="Instagram">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm8.8 2.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 2a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Z"/></svg>
-            </a>
-            <a id="facebookLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn facebook-icon" aria-label="Facebook Page" title="Facebook">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.5-3.2h-3.3V8.5c0-.9.3-1.6 1.7-1.6h1.8V4.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.1H7.1v3.2H10V22h3.5Z"/></svg>
-            </a>
-            <a id="tiktokLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn tiktok-icon" aria-label="TikTok Profile" title="TikTok">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 2c.3 2.5 1.7 4 4.2 4.2v3.2a7.8 7.8 0 0 1-4.1-1.2v6.4c0 4.1-2.5 7.4-7 7.4-3.7 0-6.7-2.5-6.7-6.3 0-4.4 3.7-6.9 7.8-6.2v3.4c-1.9-.6-4.4.5-4.4 2.8 0 1.6 1.3 2.8 3.1 2.8 2 0 3.3-1.2 3.3-3.9V2h3.8Z"/></svg>
-            </a>
-            <a id="pinterestLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn pinterest-icon" aria-label="Pinterest Boards" title="Pinterest">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 .1-2.9l1.2-5.1s-.3-.6-.3-1.5c0-1.4.8-2.5 1.8-2.5.9 0 1.3.6 1.3 1.4 0 .9-.6 2.2-.9 3.4-.2 1 .5 1.9 1.6 1.9 1.9 0 3.3-2 3.3-4.9 0-2.6-1.8-4.4-4.5-4.4-3.1 0-4.9 2.3-4.9 4.7 0 .9.4 1.9.8 2.5.1.1.1.2.1.4l-.3 1.2c0 .2-.2.3-.4.2-1.4-.7-2.3-2.7-2.3-4.4C5 7.7 7.6 4.6 12.3 4.6c3.8 0 6.8 2.7 6.8 6.4 0 3.8-2.4 6.9-5.7 6.9-1.1 0-2.2-.6-2.5-1.3l-.7 2.6c-.3.9-1 2.1-1.4 2.8A10 10 0 1 0 12 2Z"/></svg>
-            </a>
-            <a id="websiteLink" href="#" target="_blank" rel="noopener noreferrer" class="social-btn website-icon" aria-label="Official Website" title="Website">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 9h-3.1a15.2 15.2 0 0 0-1.1-5.1A8 8 0 0 1 18.9 11ZM12 4.1c.7 1 1.5 3.1 1.7 6.9h-3.4c.2-3.8 1-5.9 1.7-6.9ZM4.3 13h3.9a15.2 15.2 0 0 0 1.1 5.1A8 8 0 0 1 4.3 13Zm3.9-2H5.1a8 8 0 0 1 4.2-5.1A15.2 15.2 0 0 0 8.2 11Zm3.8 8.9c-.7-1-1.5-3.1-1.7-6.9h3.4c-.2 3.8-1 5.9-1.7 6.9Zm2.7-1.8a15.2 15.2 0 0 0 1.1-5.1h3.1a8 8 0 0 1-4.2 5.1Z"/></svg>
-            </a>
-          </nav>
-        </header>
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div>
+              <p class="contact-label">Studio &amp; Showroom</p>
+              <p id="tabAddressText" class="contact-val"><span class="skeleton-text w-52 h-4 inline-block rounded">Loading...</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- Divider -->
-        <div class="card-divider" aria-hidden="true"></div>
-
-        <!-- Collections & Links Container -->
-        <section id="linksPublic" aria-label="Collections and Links">
-          <!-- Premium Shimmering Skeleton Loaders -->
-          <div class="link-pill skeleton-box h-[64px]" aria-hidden="true"></div>
-          <div class="link-pill skeleton-box h-[64px]" aria-hidden="true"></div>
-          <div class="link-pill skeleton-box h-[64px]" aria-hidden="true"></div>
-        </section>
-
-        <!-- Bottom Brand Footer -->
-        <footer class="card-bottom-bar">
-          <a href="https://wa.me/923000000000" id="mainCtaBtn" target="_blank" rel="noopener noreferrer" class="card-brand-pill-btn">
-            <span>Inquire on WhatsApp</span>
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <p class="card-brand-footer-text">
-            Boutique Maryam • Premium Identity • <a href="admin.html">Admin</a>
-          </p>
-        </footer>
-      </article>
+      <!-- ===================================================================
+           BOTTOM ACTIONS & CLEAN FOOTER (NO LOGIN/SIGNUP BUTTON)
+           =================================================================== -->
+      <footer class="card-bottom-bar">
+        <a href="#" id="mainCtaBtn" target="_blank" rel="noopener noreferrer" class="card-brand-pill-btn">
+          <span>Inquire on WhatsApp</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <p class="card-brand-footer-text">
+          &copy; <span id="footerCopyrightYear">2026</span> All Rights Reserved • Designed &amp; Developed by <span class="font-bold tracking-wide text-gray-700">Metrisolution</span>
+          <a href="admin.html" class="secret-admin-trigger" title="Admin Portal" aria-label="Admin Portal">•</a>
+        </p>
+      </footer>
     </div>
   </main>
 
-  <!-- Share & QR Code Modal Dialog -->
+  <!-- ===================================================================
+       SHARE & QR CODE MODAL DIALOG
+       =================================================================== -->
   <div id="shareModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
     <div class="modal-surface">
       <button id="closeShareModalBtn" type="button" class="modal-close-btn" aria-label="Close share dialog">
@@ -136,8 +356,8 @@
       </button>
 
       <div class="text-center">
-        <h3 id="shareModalTitle" class="text-lg font-extrabold text-gray-900">Share Digital Card</h3>
-        <p class="text-xs text-gray-500 mt-1">Scan QR code or copy direct link to share this profile.</p>
+        <h3 id="shareModalTitle" class="text-base font-extrabold text-gray-900">Share Digital Card</h3>
+        <p class="text-xs text-gray-500 mt-1">Scan QR code or copy direct link to share this visiting card.</p>
 
         <!-- Dynamic QR Code Frame -->
         <div class="qr-code-box">
@@ -163,7 +383,7 @@
   <!-- Toast Notification Container -->
   <div id="toastContainer" class="toast-container" role="status" aria-live="polite"></div>
 
-  <!-- Firebase Scripts -->
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
   <script src="js/firebase-config.js"></script>
