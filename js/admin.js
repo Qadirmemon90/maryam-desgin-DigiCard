@@ -34,7 +34,30 @@ const DEFAULT_PROFILE = {
   qrCenterLogo: true
 };
 
-const DEFAULT_LINKS = [];
+const DEFAULT_LINKS = [
+  {
+    title: "Luxury Pret Collection",
+    url: "https://wa.me/923001234567?text=Hi%20Maryam's%20Desgins%2C%20I%20would%20like%20to%20view%20the%20Luxury%20Pret%20Collection",
+    image: "assets/1.png",
+    icon: "🛍️",
+    badge: "New Arrival",
+    active: true,
+    featured: true,
+    order: 1,
+    description: "Handcrafted ready-to-wear luxury silhouettes designed with pure breathable fabrics & artisanal threadwork."
+  },
+  {
+    title: "Bespoke Bridal & Formal Couture",
+    url: "https://wa.me/923001234567?text=Hi%20Maryam's%20Desgins%2C%20I%20would%20like%20to%20inquire%20about%20Bespoke%20Bridal%20%26%20Formal%20Couture",
+    image: "assets/2.png",
+    icon: "✨",
+    badge: "Bespoke Couture",
+    active: true,
+    featured: false,
+    order: 2,
+    description: "Made-to-measure bridal heirlooms featuring opulent zardozi, tilla, and gotta embellishments."
+  }
+];
 
 const DEMO_LINKS = [
   {
@@ -466,6 +489,12 @@ const DEMO_LINKS = [
                 batch.delete(doc.ref);
               });
               await batch.commit();
+
+              const seedBatch = db.batch();
+              DEFAULT_LINKS.forEach(function (l, idx) {
+                seedBatch.set(db.collection("links").doc("link_" + (idx + 1)), l);
+              });
+              await seedBatch.commit();
             } catch (e) {
               console.warn("Links cleanup note:", e);
             }

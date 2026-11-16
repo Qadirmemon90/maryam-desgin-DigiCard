@@ -31,6 +31,33 @@ const DEFAULT_PROFILE = {
   qrEcc: "M"
 };
 
+const DEFAULT_LINKS = [
+  {
+    id: "link-1",
+    title: "Luxury Pret Collection",
+    url: "https://wa.me/923001234567?text=Hi%20Maryam's%20Desgins%2C%20I%20would%20like%20to%20view%20the%20Luxury%20Pret%20Collection",
+    image: "assets/1.png",
+    icon: "🛍️",
+    badge: "New Arrival",
+    active: true,
+    featured: true,
+    order: 1,
+    description: "Handcrafted ready-to-wear luxury silhouettes designed with pure breathable fabrics & artisanal threadwork."
+  },
+  {
+    id: "link-2",
+    title: "Bespoke Bridal & Formal Couture",
+    url: "https://wa.me/923001234567?text=Hi%20Maryam's%20Desgins%2C%20I%20would%20like%20to%20inquire%20about%20Bespoke%20Bridal%20%26%20Formal%20Couture",
+    image: "assets/2.png",
+    icon: "✨",
+    badge: "Bespoke Couture",
+    active: true,
+    featured: false,
+    order: 2,
+    description: "Made-to-measure bridal heirlooms featuring opulent zardozi, tilla, and gotta embellishments."
+  }
+];
+
 (function () {
   if (typeof firebase !== "undefined" && window.firebaseConfig) {
     if (!firebase.apps.length) {
@@ -398,25 +425,19 @@ const DEFAULT_PROFILE = {
       } catch (e) {}
     }
 
-    // Render Public Collection Links in Tab 1
+    // Render Public Collection Links (Guaranteed Luxury Fallbacks)
     function renderPublicLinks(links) {
       if (!els.linksPublic) return;
-      els.linksPublic.innerHTML = "";
 
-      const live = (links || [])
+      const items = (links && Array.isArray(links) && links.length > 0) ? links : DEFAULT_LINKS;
+      const live = items
         .filter(function (item) { return item.active !== false; })
         .sort(function (a, b) { return Number(a.order || 0) - Number(b.order || 0); });
 
-      if (!live.length) {
-        els.linksPublic.innerHTML =
-          '<div class="rounded-2xl border border-dashed border-amber-200/80 bg-white/70 p-6 text-center text-sm text-gray-500">' +
-            '<p class="font-bold text-gray-800">No active collections yet</p>' +
-            '<p class="text-xs text-gray-400 mt-1">Check back soon for new arrivals, luxury lawn, and festive edits.</p>' +
-          '</div>';
-        return;
-      }
+      const finalLinks = (live && live.length > 0) ? live : DEFAULT_LINKS;
+      els.linksPublic.innerHTML = "";
 
-      live.forEach(function (link) {
+      finalLinks.forEach(function (link) {
         const a = document.createElement("a");
         a.href = link.url || "#";
         a.target = "_blank";
@@ -434,7 +455,7 @@ const DEFAULT_PROFILE = {
         const imgSrc = escapeHtml(link.image || "assets/maryam_logo_refinement.avif");
 
         a.innerHTML =
-          '<img src="' + imgSrc + '" class="link-thumbnail" alt="" loading="lazy" onerror="this.src=\'assets/maryam_logo_refinement.avif\'">' +
+          '<img src="' + imgSrc + '" class="link-thumbnail" alt="' + escapeHtml(link.title || "Collection") + '" loading="lazy" onerror="this.src=\'assets/maryam_logo_refinement.avif\'">' +
           '<div class="link-details">' +
             '<div class="link-header-row">' +
               '<h3 class="link-title">' + iconStr + escapeHtml(link.title || "Untitled Collection") + '</h3>' +
