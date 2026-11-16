@@ -7,34 +7,36 @@ service cloud.firestore {
     // =========================================================================
 
     // 1. Settings & Profiles (Brand Bio, Phone, WhatsApp, Logo, Theme Palette)
-    // - Public visitors can read the visiting card details
-    // - Admin can update settings (Open mode for direct admin / authenticated admin)
+    // - Public visitors can ONLY read visiting card details
+    // - Authenticated admin strictly required for updating or modifying
     match /settings/{document=**} {
       allow read: if true;
-      allow write: if true;
+      allow write: if request.auth != null;
     }
 
     // 2. Boutique Collection Catalog & Links
-    // - Public visitors can view active collections
-    // - Admin can add, update, reorder, or delete collections
+    // - Public visitors can ONLY view active collections
+    // - Authenticated admin strictly required to add, update, reorder, or delete
     match /links/{linkId} {
       allow read: if true;
-      allow write: if true;
+      allow write: if request.auth != null;
     }
 
     // 3. Multi-Brand Hub & Alternate Visiting Cards
     // - Public visitors can view specific brand cards (?brand=bridal, etc.)
-    // - Admin can create and manage brand profiles
+    // - Authenticated admin strictly required to create and manage brands
     match /brands/{brandId} {
       allow read: if true;
-      allow write: if true;
+      allow write: if request.auth != null;
     }
 
     // 4. Digital Visiting Card Analytics & Live Events
-    // - Public visitors automatically record views, QR scans, and inquiry taps
-    // - Admin can read metrics and reset counters
+    // - Public visitors can record views, QR scans, and inquiry taps (create/update only)
+    // - Resetting or deleting metrics strictly restricted to authenticated admin
     match /analytics/{document=**} {
-      allow read, write: if true;
+      allow read: if true;
+      allow create, update: if true;
+      allow delete: if request.auth != null;
     }
   }
 }

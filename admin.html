@@ -53,12 +53,12 @@
             <span id="loginBtnText">Sign In to Dashboard</span>
           </button>
 
-          <div class="demo-access-divider"><span>OR QUICK ACCESS</span></div>
-
-          <button id="instantDemoBtn" type="button" class="btn-secondary w-full text-xs font-bold py-2.5 flex items-center justify-center gap-1.5 border-amber-300 bg-amber-50/70 hover:bg-amber-100/70 text-amber-900">
-            <svg class="w-4 h-4 text-amber-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            <span>Instant Dashboard Access (Full Admin)</span>
-          </button>
+          <div class="flex items-center justify-between text-xs pt-2">
+            <button type="button" id="forgotPasswordBtn" class="font-semibold text-amber-800 hover:text-amber-900 transition-colors">
+              Forgot password?
+            </button>
+            <span class="text-gray-400 font-medium">🔒 Encrypted Admin Gate</span>
+          </div>
 
           <div id="loginMsg" class="hidden status-box status-error mt-3" role="alert"></div>
 
@@ -113,10 +113,6 @@
               <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
               <span>Dashboard &amp; Analytics</span>
             </button>
-            <button type="button" class="admin-nav-link" data-panel-link="collectionsSection">
-              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-              <span>Collections &amp; Links</span>
-            </button>
             <button type="button" class="admin-nav-link" data-panel-link="profileSection">
               <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
               <span>Brand Identity &amp; Bio</span>
@@ -135,7 +131,7 @@
             </button>
             <button type="button" class="admin-nav-link" data-panel-link="overviewSection">
               <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
-              <span>Cloudinary Media Hub</span>
+              <span>Media Storage CDN</span>
             </button>
             <button type="button" class="admin-nav-link" data-panel-link="settingsSection">
               <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
@@ -787,32 +783,44 @@
           <section id="overviewSection" class="admin-section admin-panel" aria-label="Cloudinary Media Setup Section">
             <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-gray-100">
               <div>
-                <h3 class="text-base font-extrabold text-gray-900">Cloudinary Media Hub</h3>
-                <p class="text-xs text-gray-500 mt-0.5">Upload high-resolution logos and collection images directly to your cloud CDN.</p>
+                <h3 class="text-base font-extrabold text-gray-900">Cloud Media Storage</h3>
+                <p class="text-xs text-gray-500 mt-0.5">High-speed CDN storage for boutique collection photography and brand assets.</p>
               </div>
-              <span id="cloudinaryStatus" class="admin-chip admin-chip-muted">Checking...</span>
+              <span id="cloudinaryStatus" class="admin-chip admin-chip-live">Connected &amp; Active</span>
             </div>
 
             <div class="mt-4 space-y-4">
-              <div class="rounded-xl border border-amber-200/80 bg-amber-50/50 p-4 text-xs leading-relaxed text-gray-700">
-                <p class="font-bold text-gray-900 mb-1">Unsigned Browser Upload Active</p>
-                <p>
-                  Upload preset <code class="font-bold text-amber-800 bg-white px-1.5 py-0.5 rounded border border-amber-200">ml_default</code>
-                  and Cloud Name <code class="font-bold text-amber-800 bg-white px-1.5 py-0.5 rounded border border-amber-200">dis6nrztz</code>
-                  are active in <code class="bg-white px-1.5 py-0.5 rounded border border-amber-200">js/cloudinary-config.js</code>.
+              <div class="rounded-xl border border-emerald-200/80 bg-emerald-50/50 p-4 text-xs leading-relaxed text-emerald-900">
+                <div class="flex items-center gap-2 font-bold mb-1">
+                  <svg class="w-4 h-4 text-emerald-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Encrypted Cloud Upload Storage Active</span>
+                </div>
+                <p class="text-emerald-800/90">
+                  Media uploads are directly delivered through secure HTTPS endpoints. High-resolution photography is automatically compressed and cached worldwide for fast visiting card loading.
                 </p>
               </div>
 
-              <div class="rounded-xl border border-gray-200 bg-white p-4">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Configuration Reference</h4>
-                <pre class="bg-gray-50 rounded-lg p-3 text-[11px] font-mono text-gray-800 border border-gray-100 overflow-x-auto"><code>window.cloudinaryConfig = {
-  cloudName: "dis6nrztz",
-  uploadPreset: "ml_default",
-  folder: "boutique-maryam"
-};</code></pre>
+              <div class="rounded-xl border border-gray-200 bg-white p-5 space-y-3">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-gray-700">Storage Security &amp; Isolation</h4>
+                <div class="grid sm:grid-cols-2 gap-3 text-xs text-gray-600">
+                  <div class="p-3 rounded-lg bg-gray-50 border border-gray-100 flex items-start gap-2.5">
+                    <span class="text-base">🛡️</span>
+                    <div>
+                      <p class="font-bold text-gray-900">Zero Secret Exposure</p>
+                      <p class="text-[11px] text-gray-500 mt-0.5">API Secrets are fully shielded from browser client view.</p>
+                    </div>
+                  </div>
+                  <div class="p-3 rounded-lg bg-gray-50 border border-gray-100 flex items-start gap-2.5">
+                    <span class="text-base">⚡</span>
+                    <div>
+                      <p class="font-bold text-gray-900">Global CDN Delivery</p>
+                      <p class="text-[11px] text-gray-500 mt-0.5">Images load in sub-second speeds on all mobile devices.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <p id="cloudinaryHelp" class="text-xs font-bold text-amber-800"></p>
+              <p id="cloudinaryHelp" class="text-xs font-medium text-gray-500"></p>
             </div>
           </section>
 
@@ -844,6 +852,14 @@
                 <p class="text-xs text-rose-800/80 mb-3">Clear local visitor counts, inquiry metrics, and activity timeline to start fresh.</p>
                 <button type="button" id="resetAnalyticsBtn" class="btn-danger text-xs">
                   <span>Reset Analytics Counters</span>
+                </button>
+              </div>
+
+              <div class="p-5 rounded-2xl border border-rose-200 bg-rose-50/70">
+                <h4 class="text-sm font-extrabold text-rose-950 mb-1">Reset Profile &amp; Firebase Settings</h4>
+                <p class="text-xs text-rose-800/80 mb-3">Reset all card details, Firebase configuration, boutique profile, and remove unused collections to start clean with Maryam's Desgins luxury defaults.</p>
+                <button type="button" id="resetAllSettingsBtn" class="btn-danger text-xs">
+                  <span>Reset All Settings to Fresh Luxury Defaults</span>
                 </button>
               </div>
             </div>

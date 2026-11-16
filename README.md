@@ -30,8 +30,10 @@ Tailored directly to the official **Maryam's Desgins** emblem (`maryamsdesign.co
   - Device distribution (Mobile vs Desktop).
 - **Real-Time Client Activity Stream:**
   - Live event stream showing viewer actions with timestamps and device types.
-- **Instant Demo / Admin Bypass Access:**
-  - 1-click access to the full admin dashboard from the login screen for testing and review.
+- **Strict Administrator Authentication & Security:**
+  - End-to-end Firebase email/password authenticated session. No unauthenticated bypass.
+  - Production Firestore security rules enforcing read-only access for public visitors and authenticated-only write permissions for admins.
+  - Shielded cloud storage configurations without browser API secret leaks.
 
 ### 2. Dynamic Style & Brand Sync from `maryamsdesign.com`
 - **Dynamic Sync Engine:**

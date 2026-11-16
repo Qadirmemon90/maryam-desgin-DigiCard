@@ -5,21 +5,21 @@
    ========================================================================== */
 
 const DEFAULT_PROFILE = {
-  brandName: "",
-  tagline: "",
-  username: "",
-  logoUrl: "",
-  phone: "",
-  whatsapp: "",
-  email: "",
-  instagram: "",
-  facebook: "",
-  tiktok: "",
-  pinterest: "",
-  website: "",
-  address: "",
-  hours: "",
-  bio: "",
+  brandName: "Maryam's Desgins",
+  tagline: "Luxury Pret • Festive Edit • Bespoke Couture",
+  username: "maryamsdesgins",
+  logoUrl: "assets/maryam_logo_refinement.avif",
+  phone: "+92 300 1234567",
+  whatsapp: "https://wa.me/923001234567",
+  email: "contact@maryamsdesgins.com",
+  instagram: "https://instagram.com/maryamsdesgins",
+  facebook: "https://facebook.com/maryamsdesgins",
+  tiktok: "https://tiktok.com/@maryamsdesgins",
+  pinterest: "https://pinterest.com/maryamsdesgins",
+  website: "https://maryamsdesign.com",
+  address: "Luxury Fashion Avenue, Boutique Studio, Lahore / Karachi",
+  hours: "Mon - Sat: 11:00 AM - 9:00 PM",
+  bio: "Artisanal Pret, Handcrafted Formals & Bespoke Bridal Couture created with meticulous hand embellishments and pure luxury fabrics. Designed for timeless elegance and unforgettable festive occasions.",
   themeBg: "#FFFFFF",
   pageBg: "#FAF7F2",
   buttonBg: "#FFFFFF",
@@ -254,9 +254,17 @@ const DEFAULT_PROFILE = {
       if (els.directionsLink) {
         els.directionsLink.href = address ? ("https://maps.google.com/?q=" + encodeURIComponent(address)) : "#";
       }
+      const tabDirectionsBtn = document.getElementById("tabDirectionsBtn");
+      if (tabDirectionsBtn) {
+        tabDirectionsBtn.href = address ? ("https://maps.google.com/?q=" + encodeURIComponent(address)) : "#";
+      }
       if (els.tabAddressText) {
         if (address) els.tabAddressText.textContent = address;
-        else els.tabAddressText.innerHTML = '<span class="skeleton-text w-52 h-4 inline-block rounded">Loading...</span>';
+        else els.tabAddressText.textContent = "Luxury Fashion Avenue, Boutique Studio, Lahore / Karachi";
+      }
+      const tabHoursEl = document.getElementById("tabHoursText");
+      if (tabHoursEl) {
+        tabHoursEl.textContent = hours || "Mon - Sat: 11:00 AM - 9:00 PM";
       }
 
       // Card Back Details
@@ -448,11 +456,13 @@ const DEFAULT_PROFILE = {
 
     // Card 3D Parallax Tilt Effect on Cursor / Touch
     const cardPerspective = document.querySelector(".visiting-card-perspective");
+    let isFlipping = false;
+
     if (cardPerspective && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
       let ticking = false;
 
       cardPerspective.addEventListener("mousemove", function (e) {
-        if (!els.phoneCard || els.phoneCard.classList.contains("is-flipped")) return;
+        if (!els.phoneCard || isFlipping || els.phoneCard.classList.contains("is-flipped")) return;
         const rect = cardPerspective.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -464,9 +474,11 @@ const DEFAULT_PROFILE = {
 
         if (!ticking) {
           window.requestAnimationFrame(function () {
-            cardPerspective.style.setProperty("--mouse-x", px + "%");
-            cardPerspective.style.setProperty("--mouse-y", py + "%");
-            els.phoneCard.style.transform = "rotateX(" + tiltX.toFixed(2) + "deg) rotateY(" + tiltY.toFixed(2) + "deg)";
+            if (!isFlipping && els.phoneCard && !els.phoneCard.classList.contains("is-flipped")) {
+              cardPerspective.style.setProperty("--mouse-x", px + "%");
+              cardPerspective.style.setProperty("--mouse-y", py + "%");
+              els.phoneCard.style.transform = "rotateX(" + tiltX.toFixed(2) + "deg) rotateY(" + tiltY.toFixed(2) + "deg)";
+            }
             ticking = false;
           });
           ticking = true;
@@ -474,48 +486,61 @@ const DEFAULT_PROFILE = {
       });
 
       cardPerspective.addEventListener("mouseleave", function () {
-        if (!els.phoneCard || els.phoneCard.classList.contains("is-flipped")) return;
-        els.phoneCard.style.transition = "transform 0.5s var(--ease-spring)";
-        els.phoneCard.style.transform = "rotateX(0deg) rotateY(0deg)";
-        setTimeout(function () {
-          if (els.phoneCard) els.phoneCard.style.transition = "";
-        }, 500);
+        if (!els.phoneCard || isFlipping || els.phoneCard.classList.contains("is-flipped")) return;
+        els.phoneCard.style.transform = "";
       });
     }
 
-    // 3D Visiting Card Flip Interaction
-    if (els.flipToBackBtn) {
-      els.flipToBackBtn.addEventListener("click", function () {
+    // Robust 3D Visiting Card Two-Way Flip Controller
+    function flipCard(toBack) {
+      if (!els.phoneCard || isFlipping) return;
+      isFlipping = true;
+      els.phoneCard.style.transform = "";
+      els.phoneCard.style.transition = "";
+
+      if (toBack === true) {
+        els.phoneCard.classList.add("is-flipped");
+        trackEvent("qr_scan");
+      } else if (toBack === false) {
+        els.phoneCard.classList.remove("is-flipped");
+      } else {
+        const willBeFlipped = !els.phoneCard.classList.contains("is-flipped");
+        els.phoneCard.classList.toggle("is-flipped");
+        if (willBeFlipped) trackEvent("qr_scan");
+      }
+
+      setTimeout(function () {
+        isFlipping = false;
         if (els.phoneCard) {
           els.phoneCard.style.transform = "";
-          els.phoneCard.classList.add("is-flipped");
-          trackEvent("qr_scan");
         }
+      }, 700);
+    }
+
+    if (els.flipToBackBtn) {
+      els.flipToBackBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        flipCard(true);
       });
     }
 
     if (els.flipToFrontBtn) {
-      els.flipToFrontBtn.addEventListener("click", function () {
-        if (els.phoneCard) {
-          els.phoneCard.style.transform = "";
-          els.phoneCard.classList.remove("is-flipped");
-        }
+      els.flipToFrontBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        flipCard(false);
       });
     }
 
-    // Tabs Navigation Interaction
-    const tabButtons = document.querySelectorAll(".card-tab-btn");
-    const tabPanels = document.querySelectorAll(".card-tab-content");
-
-    tabButtons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        const targetTabId = btn.dataset.tab;
-        tabButtons.forEach(function (b) { b.classList.toggle("is-active", b === btn); });
-        tabPanels.forEach(function (panel) {
-          panel.classList.toggle("is-active", panel.id === targetTabId);
-        });
+    const backFlipToFrontPill = document.getElementById("backFlipToFrontPill");
+    if (backFlipToFrontPill) {
+      backFlipToFrontPill.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        flipCard(false);
       });
-    });
+    }
 
     // Save Contact as standard .vcf Card
     function downloadVCard() {

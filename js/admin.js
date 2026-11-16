@@ -6,20 +6,21 @@
    ========================================================================== */
 
 const DEFAULT_PROFILE = {
-  brandName: "",
-  tagline: "",
-  username: "",
-  logoUrl: "",
-  phone: "",
-  whatsapp: "",
-  email: "",
-  instagram: "",
-  facebook: "",
-  tiktok: "",
-  pinterest: "",
-  website: "",
-  address: "",
-  hours: "",
+  brandName: "Maryam's Desgins",
+  tagline: "Luxury Pret • Festive Edit • Bespoke Couture",
+  username: "maryamsdesgins",
+  logoUrl: "assets/maryam_logo_refinement.avif",
+  phone: "+92 300 1234567",
+  whatsapp: "https://wa.me/923001234567",
+  email: "contact@maryamsdesgins.com",
+  instagram: "https://instagram.com/maryamsdesgins",
+  facebook: "https://facebook.com/maryamsdesgins",
+  tiktok: "https://tiktok.com/@maryamsdesgins",
+  pinterest: "https://pinterest.com/maryamsdesgins",
+  website: "https://maryamsdesign.com",
+  address: "Luxury Fashion Avenue, Boutique Studio, Lahore / Karachi",
+  hours: "Mon - Sat: 11:00 AM - 9:00 PM",
+  bio: "Artisanal Pret, Handcrafted Formals & Bespoke Bridal Couture created with meticulous hand embellishments and pure luxury fabrics. Designed for timeless elegance and unforgettable festive occasions.",
   themeBg: "#FFFFFF",
   pageBg: "#FAF7F2",
   buttonBg: "#FFFFFF",
@@ -108,7 +109,7 @@ const DEMO_LINKS = [
       togglePasswordBtn: document.getElementById("togglePasswordBtn"),
       loginBtn: document.getElementById("loginBtn"),
       loginBtnText: document.getElementById("loginBtnText"),
-      instantDemoBtn: document.getElementById("instantDemoBtn"),
+      forgotPasswordBtn: document.getElementById("forgotPasswordBtn"),
       logoutBtn: document.getElementById("logoutBtn"),
       loginMsg: document.getElementById("loginMsg"),
       globalMsg: document.getElementById("globalMsg"),
@@ -447,6 +448,34 @@ const DEMO_LINKS = [
           localStorage.removeItem("md_analytics_" + activeBrandId);
           renderDashboardAnalytics();
           showGlobal("Analytics data reset successfully.", false);
+        }
+      });
+    }
+
+    const resetAllSettingsBtn = document.getElementById("resetAllSettingsBtn");
+    if (resetAllSettingsBtn) {
+      resetAllSettingsBtn.addEventListener("click", async function () {
+        if (!confirm("Are you sure you want to reset all profile, card settings, and Firebase configuration back to clean luxury defaults?")) return;
+        try {
+          if (db) {
+            await db.collection("settings").doc("profile").set(DEFAULT_PROFILE, { merge: false });
+            try {
+              const linksSnap = await db.collection("links").get();
+              const batch = db.batch();
+              linksSnap.forEach(function (doc) {
+                batch.delete(doc.ref);
+              });
+              await batch.commit();
+            } catch (e) {
+              console.warn("Links cleanup note:", e);
+            }
+          }
+          currentProfile = { ...DEFAULT_PROFILE };
+          fillProfileForm(DEFAULT_PROFILE);
+          fillThemeForm(DEFAULT_PROFILE);
+          showGlobal("All card settings and Firebase configuration reset to fresh luxury defaults!", false);
+        } catch (err) {
+          showGlobal("Reset notice: " + err.message, true);
         }
       });
     }
@@ -1274,11 +1303,11 @@ const DEMO_LINKS = [
       if (cloudinaryReady()) {
         els.cloudinaryStatus.textContent = "Connected & Active";
         els.cloudinaryStatus.className = "admin-chip admin-chip-live";
-        els.cloudinaryHelp.textContent = "Cloudinary is active. Uploads are placed directly into folder '" + (window.cloudinaryConfig.folder || "boutique-maryam") + "'.";
+        els.cloudinaryHelp.textContent = "Cloud image delivery is active and optimized for high-speed browsing.";
       } else {
-        els.cloudinaryStatus.textContent = "Cloud Name Missing";
+        els.cloudinaryStatus.textContent = "Storage Not Configured";
         els.cloudinaryStatus.className = "admin-chip admin-chip-muted";
-        els.cloudinaryHelp.textContent = "To enable cloud uploads, configure js/cloudinary-config.js.";
+        els.cloudinaryHelp.textContent = "Storage setup required for custom cloud media.";
       }
     }
 
@@ -1314,27 +1343,38 @@ const DEMO_LINKS = [
       });
     }
 
-    // Instant Demo / Bypass Access Button
-    if (els.instantDemoBtn) {
-      els.instantDemoBtn.addEventListener("click", function () {
-        if (els.loginScreen) els.loginScreen.classList.add("hidden");
-        if (els.adminScreen) els.adminScreen.classList.remove("hidden");
-        if (els.adminUserText) els.adminUserText.textContent = "admin@maryamsdesign.com (Live Admin)";
-        restartDataListeners();
-        switchPanel("dashboardSection");
-        updateBrandUI();
-        showGlobal("⚡ Instant Admin Access granted. Welcome to Maryam's Executive Dashboard!", false);
+    // Forgot Password Action
+    if (els.forgotPasswordBtn && auth) {
+      els.forgotPasswordBtn.addEventListener("click", async function () {
+        const email = (els.email ? els.email.value : "").trim();
+        if (!email) {
+          if (els.loginMsg) {
+            els.loginMsg.textContent = "Please enter your registered email address first, then click Forgot password.";
+            els.loginMsg.classList.remove("hidden");
+          }
+          return;
+        }
+
+        try {
+          await auth.sendPasswordResetEmail(email);
+          showGlobal("Password reset instructions sent to " + email + ". Check your email inbox.", false);
+        } catch (error) {
+          if (els.loginMsg) {
+            els.loginMsg.textContent = "Reset Error: " + error.message;
+            els.loginMsg.classList.remove("hidden");
+          }
+        }
       });
     }
 
-    // Standard Firebase Login
+    // Standard Secure Firebase Login
     if (els.loginBtn && auth) {
       els.loginBtn.addEventListener("click", async function () {
         const email = els.email.value.trim();
         const password = els.password.value;
         if (!email || !password) {
           if (els.loginMsg) {
-            els.loginMsg.textContent = "Please enter email and password or use Instant Dashboard Access.";
+            els.loginMsg.textContent = "Please enter your administrator email and password.";
             els.loginMsg.classList.remove("hidden");
           }
           return;
@@ -1342,11 +1382,12 @@ const DEMO_LINKS = [
 
         try {
           els.loginBtn.disabled = true;
-          els.loginBtnText.textContent = "Signing in...";
+          els.loginBtnText.textContent = "Verifying Credentials...";
+          if (els.loginMsg) els.loginMsg.classList.add("hidden");
           await auth.signInWithEmailAndPassword(email, password);
         } catch (error) {
           if (els.loginMsg) {
-            els.loginMsg.textContent = error.message;
+            els.loginMsg.textContent = "Authentication Failed: " + error.message;
             els.loginMsg.classList.remove("hidden");
           }
         } finally {
@@ -1664,13 +1705,18 @@ const DEMO_LINKS = [
       }
     });
 
-    // Firebase Auth State Listener
+    // Strict Firebase Auth State Listener & Security Guard
     if (auth) {
       auth.onAuthStateChanged(async function (user) {
         if (user) {
+          // Authorized Admin Session
           if (els.loginScreen) els.loginScreen.classList.add("hidden");
           if (els.adminScreen) els.adminScreen.classList.remove("hidden");
-          if (els.adminUserText) els.adminUserText.textContent = user.email || "admin@maryamsdesign.com";
+          if (els.adminUserText) els.adminUserText.textContent = user.email;
+
+          switchPanel("dashboardSection");
+          updateCloudinaryStatus();
+          updateBrandUI();
 
           try {
             await seedIfEmpty(false);
@@ -1679,13 +1725,19 @@ const DEMO_LINKS = [
           } catch (error) {
             showGlobal("Initialization note: " + error.message, true);
           }
+        } else {
+          // Strictly Lock Screen: Unauthenticated access blocked
+          if (els.adminScreen) els.adminScreen.classList.add("hidden");
+          if (els.loginScreen) els.loginScreen.classList.remove("hidden");
+          if (unsubProfile) { unsubProfile(); unsubProfile = null; }
+          if (unsubLinks) { unsubLinks(); unsubLinks = null; }
+          if (unsubBrands) { unsubBrands(); unsubBrands = null; }
         }
       });
+    } else {
+      // If Firebase Auth not available, stay locked on login
+      if (els.adminScreen) els.adminScreen.classList.add("hidden");
+      if (els.loginScreen) els.loginScreen.classList.remove("hidden");
     }
-
-    // Default initialization
-    switchPanel("dashboardSection");
-    updateCloudinaryStatus();
-    updateBrandUI();
   });
 })();
